@@ -1,0 +1,12 @@
+#ifndef TCPCLIENTDLL_GLOBAL_H
+#define TCPCLIENTDLL_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#ifdef TCPCLIENTDLL_LIB
+# define TCPCLIENTDLL_EXPORT Q_DECL_EXPORT
+#else
+# define TCPCLIENTDLL_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // TCPCLIENTDLL_GLOBAL_H

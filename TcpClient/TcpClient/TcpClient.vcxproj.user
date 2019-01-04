@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <QTDIR>C:\Qt\Qt5.4.2\5.4\msvc2013_opengl</QTDIR>
+    <LocalDebuggerEnvironment>PATH="$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
+    <RemoteDebuggerCommand>d:/testremote/TcpClient.exe</RemoteDebuggerCommand>
+    <RemoteDebuggerWorkingDirectory>d:/testremote</RemoteDebuggerWorkingDirectory>
+    <RemoteDebuggerServerName>192.168.0.169</RemoteDebuggerServerName>
+    <RemoteDebuggerConnection>RemoteWithoutAuthentication</RemoteDebuggerConnection>
+    <DeploymentDirectory>d:/testremote</DeploymentDirectory>
+    <RemoteDebuggerDeployDebugCppRuntime>true</RemoteDebuggerDeployDebugCppRuntime>
+    <DebuggerFlavor>WindowsRemoteDebugger</DebuggerFlavor>
+    <AdditionalFiles>
+    </AdditionalFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <QTDIR>C:\Qt\Qt5.4.2\5.4\msvc2013_opengl</QTDIR>
+    <LocalDebuggerEnvironment>PATH="$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
+  </PropertyGroup>
+</Project>
