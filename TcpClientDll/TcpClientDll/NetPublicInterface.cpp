@@ -20,6 +20,12 @@ NetPublicInterface *NetPublicInterface::GetInstance()
 	return instance_;
 }
 
+bool network_st::NetPublicInterface::SetHeartServer(QString _heartValue)
+{
+	SetHeartServer(_heartValue);
+	return true;
+}
+
 void NetPublicInterface::OpenDebug(bool _is_open)
 {
 	SetOutDebug(_is_open);

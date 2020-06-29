@@ -61,6 +61,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Networkd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(OutDir)$(ProjectName)2015d.dll" D:\project_test\vs2015_project\ClientDllTest\Win32\Debug /y
+xcopy "$(OutDir)$(ProjectName)2015d.lib" D:\project_test\vs2015_project\ClientDllTest\Win32\Debug /y
+xcopy "$(OutDir)$(ProjectName)2015d.lib" D:\project_test\vs2015_project\ClientDllTest\ClientDllTest\lib\debug /y
+xcopy "$(OutDir)$(ProjectName)2015d.dll" D:\project_test\vs2015_project\ClientDllTest\ClientDllTest\lib\debug /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -77,6 +83,12 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Network.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(OutDir)$(ProjectName)2015.dll" D:\project_test\vs2015_project\ClientDllTest\Win32\Release /y
+xcopy "$(OutDir)$(ProjectName)2015.lib" D:\project_test\vs2015_project\ClientDllTest\Win32\Release /y
+xcopy "$(OutDir)$(ProjectName)2015.lib" D:\project_test\vs2015_project\ClientDllTest\ClientDllTest\lib\release /y
+xcopy "$(OutDir)$(ProjectName)2015.dll" D:\project_test\vs2015_project\ClientDllTest\ClientDllTest\lib\release /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AddressManager.cpp" />

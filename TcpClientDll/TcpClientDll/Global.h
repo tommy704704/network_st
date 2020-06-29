@@ -21,10 +21,12 @@
 #define UDP_HEARTBEAT_CLIENT_PORT 60066
 
 namespace network_st {
+extern QString k_keepAlive;
+extern QString k_receipt_keepAlive;
 
-const QString k_keepAlive = "KeepAlive";					///<心跳询问包
-
-const QString k_receipt_keepAlive = "Ark_KeepAlive";		///<心跳回执包
+//const QString k_keepAlive = "KeepAlive";					///<心跳询问包
+//
+//const QString k_receipt_keepAlive = "Ark_KeepAlive";		///<心跳回执包
 
 const QString k_reset = "Reset";							///<客户端清除连接
 
@@ -133,6 +135,17 @@ int GetBroadcastInterval();
 * @see
 */
 int GetTimeout();
+
+/*
+* @file
+* @author
+* @brief 设置心跳包，区分服务器类型，客户端也需要设置一样的心跳参数
+* @param _heartValue 心跳参数
+* @return
+* @retval
+* @see
+*/
+bool SetHeartServer(QString _heartValue);
 
 }
 #endif // GLOBAL_H

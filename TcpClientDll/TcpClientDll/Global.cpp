@@ -1,6 +1,10 @@
 #include "Global.h"
 
 using namespace network_st;
+QString network_st::k_keepAlive = "KeepAlive";					///<默认心跳询问包
+
+QString network_st::k_receipt_keepAlive = "Ark_KeepAlive";		///<默认心跳回执包
+
 bool is_out_log_ = false;
 ///<全局是否输出debug
 
@@ -28,6 +32,15 @@ int network_st::GetBroadcastInterval()
 int network_st::GetTimeout()
 {
 	return client_timeout_;
+}
+
+bool network_st::SetHeartServer(QString _heartValue)
+{
+	k_keepAlive = _heartValue;					///<心跳询问包
+
+	k_receipt_keepAlive = QString("%1%2").arg("Ark_").arg(_heartValue);		///<心跳回执包
+
+	return true;
 }
 
 QString network_st::GetLocalIP()

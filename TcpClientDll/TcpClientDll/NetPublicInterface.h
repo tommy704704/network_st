@@ -20,6 +20,16 @@ public:
 	~NetPublicInterface();
 
 	static NetPublicInterface *GetInstance();
+	/*
+	* @file
+	* @author
+	* @brief 设置心跳包，区分服务器类型，客户端也需要设置一样的心跳参数
+	* @param _heartValue 心跳参数
+	* @return
+	* @retval
+	* @see
+	*/
+	bool SetHeartServer(QString _heartValue);
 
 	/*
 	* @file

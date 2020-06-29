@@ -140,6 +140,12 @@ NetPublicInterface::~NetPublicInterface()
 	netInterface_ = NULL;
 }
 
+bool network_st::NetPublicInterface::SetHeartServer(QString _heartValue)
+{
+	SetHeartServer(_heartValue);
+	return true;
+}
+
 NetPublicInterface::NetPublicInterface()
 {
 // 	qInstallMessageHandler(outputMessage);

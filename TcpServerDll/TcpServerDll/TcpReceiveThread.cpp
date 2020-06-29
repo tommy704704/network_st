@@ -74,6 +74,7 @@ void TcpReceiveThread::Slot_ReadyRead()
 	}
 	else if (acceptedSocket->isValid() && acceptedSocket->isReadable())
 	{
+		qint64 size = acceptedSocket->readBufferSize();
 		//client_ip = acceptedSocket->peerAddress().toString();
 		client_ip = GetPeerAddressIpv4(acceptedSocket);
 		qDebug() << "message received from client ip: " << client_ip;

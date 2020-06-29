@@ -24,10 +24,12 @@
 #define UDP_HEARTBEAT_CLIENT_PORT 60066
 
 namespace network_st {
+extern QString k_keepAlive;
+extern QString k_receipt_keepAlive;
+extern QMap<QString, QByteArray> k_temp_big_bytes_map_;
+//const QString k_keepAlive = "KeepAlive";					///<默认心跳询问包
 
-const QString k_keepAlive = "KeepAlive";					///<心跳询问包
-
-const QString k_receipt_keepAlive = "Ark_KeepAlive";		///<心跳回执包
+//const QString k_receipt_keepAlive = "Ark_KeepAlive";		///<默认心跳回执包
 
 const QString k_reset = "Reset";							///<客户端清除连接
 
@@ -40,6 +42,7 @@ const int k_client_timeout_ = 30;						///<客户端超时的默认时间30，�
 const int k_broadcast_interval_ = 3;					///<广播发送的默认间隔3，单位秒
 
 const QString k_header_message = "-head-";				///<消息头
+const QString k_end_message = "-end-";		///<消息结束，解决大消息融合
 
 /************************************************************************/
 /*消息默认是QByteArray接收QDataStream这种形式因为业务需要，IsStreamHandle返回为true
@@ -142,6 +145,17 @@ void SetOutDebug(bool _is_out_debug);
 * @see
 */
 bool GetOutDebug();
+
+/*
+* @file
+* @author
+* @brief 设置心跳包，区分服务器类型，客户端也需要设置一样的心跳参数
+* @param _heartValue 心跳参数
+* @return
+* @retval
+* @see
+*/
+bool SetHeartServer(QString _heartValue);
 }
 
 #endif // GLOBAL_H
