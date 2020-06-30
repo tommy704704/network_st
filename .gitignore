@@ -95,3 +95,4 @@ p2pTest.vcxproj.user
 qt.txt
 Release
 Debug
+*.user
