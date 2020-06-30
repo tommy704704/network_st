@@ -93,3 +93,5 @@ p2pTest.vcxproj
 p2pTest.vcxproj.filters
 p2pTest.vcxproj.user
 qt.txt
+Release
+Debug
