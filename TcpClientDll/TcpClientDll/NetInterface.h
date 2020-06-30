@@ -10,7 +10,7 @@
 #include <QTcpSocket>
 #include "Global.h"
 
-namespace network_st {
+namespace network_client_st {
 
 class UdpReceiveThread;
 class UdpSendThread;
@@ -39,7 +39,7 @@ public:
     }
 	/************************************
 	* @Method:    GetAllServers
-	* @FullName:  network_st::AddressManager::GetAllServers
+	* @FullName:  network_client_st::AddressManager::GetAllServers
 	* @Access:    public
 	* @Returns:   QList<Server *> *
 	* @Qualifier:
@@ -49,7 +49,7 @@ public:
 
 	/************************************
 	* @Method:    GetReceiveNewMessage
-	* @FullName:  network_st::NetInterface::GetReceiveNewMessage
+	* @FullName:  network_client_st::NetInterface::GetReceiveNewMessage
 	* @Access:    public 
 	* @Returns:   MessageUnit *
 	* @Qualifier:
@@ -58,7 +58,7 @@ public:
 	MessageUnit * GetReceiveNewMessage();
 	/************************************
 	* @Method:    AddSendMessage
-	* @FullName:  network_st::NetInterface::AddSendMessage
+	* @FullName:  network_client_st::NetInterface::AddSendMessage
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
@@ -68,7 +68,7 @@ public:
 	void AddSendMessage(MessageUnit *_messageUnit);
 	/************************************
 	* @Method:    GetSendTcpSocketByIP
-	* @FullName:  network_st::NetInterface::GetSendTcpSocketByIP
+	* @FullName:  network_client_st::NetInterface::GetSendTcpSocketByIP
 	* @Access:    public
 	* @Returns:   void
 	* @Qualifier:

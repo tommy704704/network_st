@@ -10,7 +10,7 @@
 #include <QTcpSocket>
 #include "Global.h"
 
-namespace network_st {
+namespace network_server_st {
 
 class AddressManager;
 class LogManager;
@@ -39,7 +39,7 @@ public:
     MessageUnit *GetReceivedNewMessageUnit();
 	/************************************
 	* @Method:    GetAllClient
-	* @FullName:  network_st::NetInterface::GetAllClient
+	* @FullName:  network_server_st::NetInterface::GetAllClient
 	* @Access:    public 
 	* @Returns:   QList<Client *> *
 	* @Qualifier:
@@ -48,7 +48,7 @@ public:
 	QList<Client *> *GetAllClient();
 	/************************************
 	* @Method:    AddMessageToSend
-	* @FullName:  network_st::NetInterface::AddMessageToSend
+	* @FullName:  network_server_st::NetInterface::AddMessageToSend
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
@@ -58,7 +58,7 @@ public:
 	void AddMessageToSend(MessageUnit *_messageUnit);
 	/************************************
 	* @Method:    RemoveSendMessage
-	* @FullName:  network_st::NetInterface::RemoveSendMessage
+	* @FullName:  network_server_st::NetInterface::RemoveSendMessage
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
@@ -68,7 +68,7 @@ public:
 	void RemoveSendMessage(char *_msg);
 	/************************************
 	* @Method:    AddClientAddress
-	* @FullName:  network_st::NetInterface::AddClientAddress
+	* @FullName:  network_server_st::NetInterface::AddClientAddress
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
@@ -78,7 +78,7 @@ public:
 	void AddClientAddress(Client *_client);
 	/************************************
 	* @Method:    RemoveClientAddress
-	* @FullName:  network_st::NetInterface::RemoveClientAddress
+	* @FullName:  network_server_st::NetInterface::RemoveClientAddress
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:

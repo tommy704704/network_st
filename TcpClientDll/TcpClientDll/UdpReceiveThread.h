@@ -12,7 +12,7 @@
 #include <QUdpSocket>
 #include "Global.h"
 #include "UdpSendThread.h"
-namespace network_st {
+namespace network_client_st {
 class AddressManager;
 class SocketManager;
 class TcpReceiveThread;

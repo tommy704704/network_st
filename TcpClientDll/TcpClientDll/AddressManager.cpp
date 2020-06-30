@@ -1,7 +1,7 @@
 #include "AddressManager.h"
-using namespace network_st;
+using namespace network_client_st;
 AddressManager *AddressManager::instance_ = nullptr;
-namespace network_st {
+namespace network_client_st {
 AddressManager::AddressManager()
 {
 	Init();

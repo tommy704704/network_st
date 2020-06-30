@@ -20,7 +20,7 @@
  * @author 宋涛
  * @date 2018/03/08
  ************************************/
-namespace network_st{
+namespace network_server_st{
 class UdpSendThread : public QThread
 {
 	Q_OBJECT
@@ -40,7 +40,7 @@ public:
 
 	/************************************
 	* @Method:    NoticeClientClearTcpConnect
-	* @FullName:  network_st::UdpSendThread::NoticeClientClearTcpConnect
+	* @FullName:  network_server_st::UdpSendThread::NoticeClientClearTcpConnect
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:

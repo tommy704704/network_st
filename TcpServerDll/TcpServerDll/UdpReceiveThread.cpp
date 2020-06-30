@@ -2,7 +2,7 @@
 #include "Global.h"
 
 #include <QDateTime>
-using namespace network_st;
+using namespace network_server_st;
 UdpReceiveThread *UdpReceiveThread::instance_ = nullptr;
 
 extern QString g_local_ip;

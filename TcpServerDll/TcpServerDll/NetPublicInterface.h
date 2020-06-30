@@ -10,7 +10,7 @@
 #include "Global.h"
 #include "tcpserverdll_global.h"
 
-namespace network_st {
+namespace network_server_st {
 class NetInterface;
 
 class TCPSERVERDLL_EXPORT NetPublicInterface
@@ -32,7 +32,7 @@ public:
 
 	/************************************
 	* @Method:    GetInstance
-	* @FullName:  network_st::NetPublicInterface::GetInstance
+	* @FullName:  network_server_st::NetPublicInterface::GetInstance
 	* @Access:    public static 
 	* @Returns:   NetPublicInterface *
 	* @Qualifier:
@@ -53,7 +53,7 @@ public:
 
 	/************************************
 	* @Method:    SetLocalIpv4
-	* @FullName:  network_st::SetLocalIpv4
+	* @FullName:  network_server_st::SetLocalIpv4
 	* @Access:    public
 	* @Returns:   void
 	* @Qualifier:
@@ -86,7 +86,7 @@ public:
 
 	/************************************
 	* @Method:    GetLocalAllIPv4
-	* @FullName:  network_st::GetLocalAllIPv4
+	* @FullName:  network_server_st::GetLocalAllIPv4
 	* @Access:    public
 	* @Returns:   QT_NAMESPACE::QStringList
 	* @Qualifier:
@@ -105,7 +105,7 @@ public:
 	MessageUnit *GetReceivedNewMessageUnit();
 	/************************************
 	* @Method:    GetAllClient
-	* @FullName:  network_st::NetPublicInterface::GetAllClient
+	* @FullName:  network_server_st::NetPublicInterface::GetAllClient
 	* @Access:    public
 	* @Returns:   QList<Client *> *如果没有在线，则列表里数据为0
 	* @Qualifier:
@@ -114,7 +114,7 @@ public:
 	QList<Client *> *GetAllClient();
 	/************************************
 	* @Method:    AddMessageToSend
-	* @FullName:  network_st::NetPublicInterface::AddMessageToSend
+	* @FullName:  network_server_st::NetPublicInterface::AddMessageToSend
 	* @Access:    public
 	* @Returns:   void
 	* @Qualifier:
@@ -124,7 +124,7 @@ public:
 	void AddMessageToSend(MessageUnit *_messageUnit);
 	/************************************
 	* @Method:    RemoveSendMessage
-	* @FullName:  network_st::NetPublicInterface::RemoveSendMessage
+	* @FullName:  network_server_st::NetPublicInterface::RemoveSendMessage
 	* @Access:    public
 	* @Returns:   void
 	* @Qualifier:
@@ -134,7 +134,7 @@ public:
 	void RemoveSendMessage(char *_msg);
 	/************************************
 	* @Method:    AddClientAddress
-	* @FullName:  network_st::NetPublicInterface::AddClientAddress
+	* @FullName:  network_server_st::NetPublicInterface::AddClientAddress
 	* @Access:    public
 	* @Returns:   void
 	* @Qualifier:
@@ -144,7 +144,7 @@ public:
 	void AddClientAddress(Client *_client);
 	/************************************
 	* @Method:    RemoveClientAddress
-	* @FullName:  network_st::NetPublicInterface::RemoveClientAddress
+	* @FullName:  network_server_st::NetPublicInterface::RemoveClientAddress
 	* @Access:    public
 	* @Returns:   void
 	* @Qualifier:

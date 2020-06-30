@@ -14,7 +14,7 @@
 #include "SocketManager.h"
 #include "TcpReceiveThread.h"
 #include "TcpSendThread.h"
-namespace network_st{
+namespace network_client_st{
 /************************************!
  * @class 
  *

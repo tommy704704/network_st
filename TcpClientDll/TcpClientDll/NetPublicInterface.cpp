@@ -1,7 +1,7 @@
 #include "NetPublicInterface.h"
 #include "NetInterface.h"
 
-using namespace network_st;
+using namespace network_client_st;
 
 extern QString g_local_ip;
 
@@ -20,7 +20,7 @@ NetPublicInterface *NetPublicInterface::GetInstance()
 	return instance_;
 }
 
-bool network_st::NetPublicInterface::SetHeartServer(QString _heartValue)
+bool network_client_st::NetPublicInterface::SetHeartServer(QString _heartValue)
 {
 	SetHeartServer(_heartValue);
 	return true;
@@ -31,7 +31,7 @@ void NetPublicInterface::OpenDebug(bool _is_open)
 	SetOutDebug(_is_open);
 }
 
-QList<Server*>* network_st::NetPublicInterface::GetAllServers()
+QList<Server*>* network_client_st::NetPublicInterface::GetAllServers()
 {
 	return netInterface_->GetAllServers();
 }
@@ -42,7 +42,7 @@ void NetPublicInterface::SetLocalIpv4(QString _ipv4)
 }
 
 
-void network_st::NetPublicInterface::SetServerIpv4(QString _ipv4)
+void network_client_st::NetPublicInterface::SetServerIpv4(QString _ipv4)
 {
 	g_server_ip = _ipv4;
 }
@@ -54,7 +54,7 @@ NetPublicInterface::~NetPublicInterface()
 	netInterface_ = NULL;
 }
 
-network_st::NetPublicInterface::NetPublicInterface()
+network_client_st::NetPublicInterface::NetPublicInterface()
 {
 	qDebug() << "NetPublicInterface()";
 
@@ -73,17 +73,17 @@ void NetPublicInterface::CreateSignalAndSlot()
 
 }
 
-MessageUnit * network_st::NetPublicInterface::GetReceiveNewMessage()
+MessageUnit * network_client_st::NetPublicInterface::GetReceiveNewMessage()
 {
 	return netInterface_->GetReceiveNewMessage();
 }
 
-void network_st::NetPublicInterface::AddSendMessage(MessageUnit *_messageUnit)
+void network_client_st::NetPublicInterface::AddSendMessage(MessageUnit *_messageUnit)
 {
 	netInterface_->AddSendMessage(_messageUnit);
 }
 
-bool network_st::NetPublicInterface::IsConnectedToHost(const QString _ip)
+bool network_client_st::NetPublicInterface::IsConnectedToHost(const QString _ip)
 {
 	QTcpSocket *socket_toHost = netInterface_->GetSendTcpSocketByIP(_ip);
 
@@ -93,7 +93,7 @@ bool network_st::NetPublicInterface::IsConnectedToHost(const QString _ip)
 		return false;
 }
 
-void network_st::NetPublicInterface::SetTimeOut(const int _timeout)
+void network_client_st::NetPublicInterface::SetTimeOut(const int _timeout)
 {
 	if (_timeout <= 0)
 	{

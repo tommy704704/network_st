@@ -10,7 +10,7 @@
 #include "Global.h"
 #include "tcpclientdll_global.h"
 
-namespace network_st {
+namespace network_client_st {
 class NetInterface;
 
 class TCPCLIENTDLL_EXPORT NetPublicInterface
@@ -44,7 +44,7 @@ public:
 
 	/************************************
 	* @Method:    GetAllServers
-	* @FullName:  network_st::AddressManager::GetAllServers
+	* @FullName:  network_client_st::AddressManager::GetAllServers
 	* @Access:    public
 	* @Returns:   QList<Server *> *
 	* @Qualifier:
@@ -54,7 +54,7 @@ public:
 
 	/************************************
 	* @Method:    GetReceiveNewMessage
-	* @FullName:  network_st::NetPublicInterface::GetReceiveNewMessage
+	* @FullName:  network_client_st::NetPublicInterface::GetReceiveNewMessage
 	* @Access:    public
 	* @Returns:   MessageUnit * 如果没有消息就为空
 	* @Qualifier:
@@ -64,7 +64,7 @@ public:
 
 	/************************************
 	* @Method:    AddSendMessage
-	* @FullName:  network_st::NetPublicInterface::AddSendMessage
+	* @FullName:  network_client_st::NetPublicInterface::AddSendMessage
 	* @Access:    public
 	* @Returns:   void
 	* @Qualifier:
@@ -75,7 +75,7 @@ public:
 
 	/************************************
 	* @Method:    IsConnectedToHost
-	* @FullName:  network_st::NetPublicInterface::IsConnectedToHost
+	* @FullName:  network_client_st::NetPublicInterface::IsConnectedToHost
 	* @Access:    public
 	* @Returns:   void
 	* @Qualifier:
@@ -97,7 +97,7 @@ public:
 
 	/************************************
 	* @Method:    SetLocalIpv4
-	* @FullName:  network_st::SetLocalIpv4
+	* @FullName:  network_client_st::SetLocalIpv4
 	* @Access:    public
 	* @Returns:   void
 	* @Qualifier:
@@ -108,7 +108,7 @@ public:
 
 	/************************************
 	* @Method:    SetServerIpv4
-	* @FullName:  network_st::NetPublicInterface::SetServerIpv4
+	* @FullName:  network_client_st::NetPublicInterface::SetServerIpv4
 	* @Access:    public static 
 	* @Returns:   void
 	* @Qualifier:

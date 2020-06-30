@@ -16,7 +16,7 @@
 #include "MessageManager.h"
 #include "SocketManager.h"
 
-namespace network_st {
+namespace network_server_st {
 
 class TcpReceiveThread : public QThread
 {

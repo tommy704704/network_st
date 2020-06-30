@@ -2,7 +2,7 @@
 #include "Global.h"
 
 #include <QDateTime>
-using namespace network_st;
+using namespace network_server_st;
 
 UdpSendThread *UdpSendThread::s_instance_ = nullptr;
 
@@ -113,7 +113,7 @@ void UdpSendThread::run()
 	}
 }
 
-void network_st::UdpSendThread::NoticeClientClearTcpConnect()
+void network_server_st::UdpSendThread::NoticeClientClearTcpConnect()
 {
 
 	int size = addressManager_->GetAllClientSize();

@@ -1,5 +1,5 @@
 #include "TcpSendThread.h"
-using namespace network_st;
+using namespace network_server_st;
 
 TcpSendThread *TcpSendThread::instance_ = NULL;
 TcpSendThread::TcpSendThread(QObject *parent) : QThread(parent)
@@ -142,7 +142,7 @@ bool TcpSendThread::SendMessage(const QString _ipv4)
 // 	qint64 success_sended = sendSocket->write(block);
 }
 
-void network_st::TcpSendThread::Slot_NewConnection()
+void network_server_st::TcpSendThread::Slot_NewConnection()
 {
 	//QTcpSocket *acceptedSocket = tcp_server_->nextPendingConnection();
 

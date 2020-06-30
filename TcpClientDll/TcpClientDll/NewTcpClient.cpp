@@ -1,20 +1,20 @@
 #include "NewTcpClient.h"
 #include <QDateTime>
 #include "Global.h"
-using namespace network_st;
+using namespace network_client_st;
 extern QString g_server_ip;
 
 NewTcpClient *NewTcpClient::s_instance_ = nullptr;
-network_st::NewTcpClient::NewTcpClient() : tcpReceiveThread_(nullptr)
+network_client_st::NewTcpClient::NewTcpClient() : tcpReceiveThread_(nullptr)
 {
 	Init();
 }
 
-network_st::NewTcpClient::~NewTcpClient()
+network_client_st::NewTcpClient::~NewTcpClient()
 {
 }
 
-void network_st::NewTcpClient::CreateSignalAndSLot()
+void network_client_st::NewTcpClient::CreateSignalAndSLot()
 {
 	bool is_ok = connect(tcpSocket_connectToServer_
 		, SIGNAL(connected())
@@ -55,7 +55,7 @@ void network_st::NewTcpClient::CreateSignalAndSLot()
 
 }
 
-void network_st::NewTcpClient::Init()
+void network_client_st::NewTcpClient::Init()
 {
 	logManager_ = LogManager::GetInstance();
 
@@ -64,7 +64,7 @@ void network_st::NewTcpClient::Init()
 	tcpSendThread_ = TcpSendThread::GetInstance();
 
 }
-QString network_st::NewTcpClient::GetConnectionInfromation(const int _type)
+QString network_client_st::NewTcpClient::GetConnectionInfromation(const int _type)
 {
 	QString result = "none information";
 	switch (_type)
@@ -96,7 +96,7 @@ QString network_st::NewTcpClient::GetConnectionInfromation(const int _type)
 	return result;
 }
 
-void network_st::NewTcpClient::Slot_BindNewTcpConnection()
+void network_client_st::NewTcpClient::Slot_BindNewTcpConnection()
 {
 	QTcpSocket *tcpSocket_send = socketManager_->GetSendTcpSocketByIP(g_server_ip);
 	if (!tcpSocket_send)
@@ -159,7 +159,7 @@ void network_st::NewTcpClient::Slot_BindNewTcpConnection()
 	}
 }
 
-void network_st::NewTcpClient::Slot_Connected()
+void network_client_st::NewTcpClient::Slot_Connected()
 {
 	socketManager_->AppendSendTcpSocket(tcpSocket_connectToServer_);
 	///<添加到连接池
@@ -179,7 +179,7 @@ void network_st::NewTcpClient::Slot_Connected()
 
 }
 
-void network_st::NewTcpClient::Slot_DisplayError(QAbstractSocket::SocketError error)
+void network_client_st::NewTcpClient::Slot_DisplayError(QAbstractSocket::SocketError error)
 {
 	QTcpSocket *tcpSocket_send = socketManager_->GetSendTcpSocketByIP(g_server_ip);
 	if (!tcpSocket_send)
@@ -221,12 +221,12 @@ void network_st::NewTcpClient::Slot_DisplayError(QAbstractSocket::SocketError er
 	}
 }
 
-void network_st::NewTcpClient::Slot_Disconnected()
+void network_client_st::NewTcpClient::Slot_Disconnected()
 {
 
 }
 
-void network_st::NewTcpClient::Slot_GetServerAddress()
+void network_client_st::NewTcpClient::Slot_GetServerAddress()
 {
 	tcpSocket_connectToServer_ = new QTcpSocket();
 	QHostAddress server_address(g_server_ip);
@@ -249,7 +249,7 @@ void network_st::NewTcpClient::Slot_GetServerAddress()
 
 }
 
-void network_st::NewTcpClient::Slot_StateChanged(QAbstractSocket::SocketState _socketState)
+void network_client_st::NewTcpClient::Slot_StateChanged(QAbstractSocket::SocketState _socketState)
 {
 	QTcpSocket *sendSocket = qobject_cast<QTcpSocket *>(sender());
 	if (QAbstractSocket::ClosingState == _socketState)

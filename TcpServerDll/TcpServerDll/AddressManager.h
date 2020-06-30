@@ -11,7 +11,7 @@
 #include <QList>
 #include <QMutex>
 #include "Global.h"
-namespace network_st{
+namespace network_server_st{
 
 class AddressManager
 {
@@ -28,7 +28,7 @@ public:
 	}
 	/************************************
 	* @Method:    AddClientAddress
-	* @FullName:  network_st::AddressManager::AddClientAddress
+	* @FullName:  network_server_st::AddressManager::AddClientAddress
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
@@ -38,7 +38,7 @@ public:
 	void AddClientAddress(Client *_client);
 	/************************************
 	* @Method:    RemoveClientAddress
-	* @FullName:  network_st::AddressManager::RemoveClientAddress
+	* @FullName:  network_server_st::AddressManager::RemoveClientAddress
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
@@ -48,7 +48,7 @@ public:
 	void RemoveClientAddress(int _index);
 	/************************************
 	* @Method:    GetAllClientSize
-	* @FullName:  network_st::AddressManager::GetAllClientSize
+	* @FullName:  network_server_st::AddressManager::GetAllClientSize
 	* @Access:    public 
 	* @Returns:   int
 	* @Qualifier:
@@ -57,7 +57,7 @@ public:
 	int GetAllClientSize();
 	/************************************
 	* @Method:    GetClientByIndex
-	* @FullName:  network_st::AddressManager::GetClientByIndex
+	* @FullName:  network_server_st::AddressManager::GetClientByIndex
 	* @Access:    public 
 	* @Returns:   Client *
 	* @Qualifier:
@@ -67,7 +67,7 @@ public:
 	Client *GetClientByIndex(const int _index);
 	/************************************
 	* @Method:    GetAllClient
-	* @FullName:  network_st::AddressManager::GetAllClient
+	* @FullName:  network_server_st::AddressManager::GetAllClient
 	* @Access:    public 
 	* @Returns:   QList<Client *> *
 	* @Qualifier:
@@ -76,7 +76,7 @@ public:
 	QList<Client *> *GetAllClient();
 	/************************************
 	* @Method:    UpdateClientState
-	* @FullName:  network_st::AddressManager::UpdateClientState
+	* @FullName:  network_server_st::AddressManager::UpdateClientState
 	* @Access:    public 
 	* @Returns:   QList<Client *> *
 	* @Qualifier:
@@ -86,7 +86,7 @@ public:
 	QList<Client *> *UpdateClientState(Client *_client);
 	/************************************
 	* @Method:    UpdateClientTimeout
-	* @FullName:  network_st::AddressManager::UpdateClientTimeout
+	* @FullName:  network_server_st::AddressManager::UpdateClientTimeout
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
@@ -95,7 +95,7 @@ public:
 	QList<Client *> *UpdateClientTimeout();
 	/************************************
 	* @Method:    ResetClientTimeout
-	* @FullName:  network_st::AddressManager::ResetClientTimeout
+	* @FullName:  network_server_st::AddressManager::ResetClientTimeout
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
@@ -104,7 +104,7 @@ public:
 	void ResetClientTimeout();
 	/************************************
 	* @Method:    SetClientOffline
-	* @FullName:  network_st::AddressManager::SetClientOffline
+	* @FullName:  network_server_st::AddressManager::SetClientOffline
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:

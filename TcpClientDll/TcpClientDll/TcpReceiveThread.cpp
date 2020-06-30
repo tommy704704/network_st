@@ -3,20 +3,20 @@
 #include "MessageManager.h"
 #include "SocketManager.h"
 
-using namespace network_st;
+using namespace network_client_st;
 
 TcpReceiveThread *TcpReceiveThread::instance_ = nullptr;
 
 extern QString g_server_ip;
 
-network_st::TcpReceiveThread::~TcpReceiveThread()
+network_client_st::TcpReceiveThread::~TcpReceiveThread()
 {
 	is_quit_ = true;
 
 	wait();
 }
 
-void network_st::TcpReceiveThread::Slot_ReadMessage()
+void network_client_st::TcpReceiveThread::Slot_ReadMessage()
 {
 	qDebug() << "Slot_ReadMessage()";
 
@@ -33,7 +33,7 @@ void network_st::TcpReceiveThread::Slot_ReadMessage()
 
 // 	QString message = QString::fromLocal8Bit(byteArray_message.data());
 
-	QList<MessageUnit *> * list_messages = UnpackMessage(byteArray_message);
+	QList<MessageUnit *> * list_messages = UnpackMessage(byteArray_message, g_server_ip);
 	///<拆解消息包头，解决多条消息缓冲区一起取出来，消息融合的问题
 
 	int size = list_messages->size();
@@ -59,18 +59,18 @@ void network_st::TcpReceiveThread::Slot_ReadMessage()
 }
 
 
-network_st::TcpReceiveThread::TcpReceiveThread() : is_quit_(false)
+network_client_st::TcpReceiveThread::TcpReceiveThread() : is_quit_(false)
 {
 	qDebug() << "TcpReceiveThread()";
 
 	Init();
 }
 
-void network_st::TcpReceiveThread::CreateSignalAndSlot()
+void network_client_st::TcpReceiveThread::CreateSignalAndSlot()
 {
 }
 
-void network_st::TcpReceiveThread::Init()
+void network_client_st::TcpReceiveThread::Init()
 {
 	blockSize_ = 0;			///<初始化其为0
 
@@ -80,7 +80,7 @@ void network_st::TcpReceiveThread::Init()
 
 }
 
-void network_st::TcpReceiveThread::run()
+void network_client_st::TcpReceiveThread::run()
 {
 	exec();
 }

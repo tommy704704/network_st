@@ -1,6 +1,6 @@
 #include "MessageManager.h"
 
-using namespace network_st;
+using namespace network_server_st;
 
 MessageManager *MessageManager::instance_ = nullptr;
 
@@ -130,7 +130,7 @@ void MessageManager::RemoveSendMessage(char *_msg)
 	mutex_.unlock();
 }
 
-MessageUnit * network_st::MessageManager::GetNewReceivedMessageUnit()
+MessageUnit * network_server_st::MessageManager::GetNewReceivedMessageUnit()
 {
 	mutex_.lock();
 	

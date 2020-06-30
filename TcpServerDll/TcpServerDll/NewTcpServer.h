@@ -16,7 +16,7 @@
 #include "TcpReceiveThread.h"
 #include "TcpSendThread.h"
 #include "SocketManager.h"
-namespace network_st {
+namespace network_server_st {
 
 class NewTcpServer : public QObject
 {

@@ -2,7 +2,7 @@
 
 #include <QDebug>
 
-using namespace network_st;
+using namespace network_server_st;
 
 TcpReceiveThread *TcpReceiveThread::instance_ = NULL;
 TcpReceiveThread::TcpReceiveThread() : is_quit_(false)
@@ -94,7 +94,7 @@ void TcpReceiveThread::Slot_ReadyRead()
 			QString message = QString::fromLocal8Bit(byteArray_receive.data());
 
 // 			QStringList list_messages = UnpackMessage(message);
-			QList<MessageUnit *> * list_messages = UnpackMessage(byteArray_receive);
+			QList<MessageUnit *> * list_messages = UnpackMessage(byteArray_receive, client_ip);
 			//拆解消息包头，解决多条消息缓冲区一起取出来，消息融合的问题
 
 // 			int size = list_messages.size();

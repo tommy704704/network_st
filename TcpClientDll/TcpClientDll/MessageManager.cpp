@@ -1,5 +1,5 @@
 #include "MessageManager.h"
-using namespace network_st;
+using namespace network_client_st;
 
 MessageManager *MessageManager::instance_ = nullptr;
 MessageManager::MessageManager()
@@ -141,7 +141,7 @@ void MessageManager::RemoveSendMessage(char *_msg)
 	mutex_.unlock();
 }
 
-void network_st::MessageManager::AddSendMessage(MessageUnit *_messageUnit)
+void network_client_st::MessageManager::AddSendMessage(MessageUnit *_messageUnit)
 {
 	mutex_.lock();
 	queue_sending_message_->enqueue(_messageUnit);
@@ -149,7 +149,7 @@ void network_st::MessageManager::AddSendMessage(MessageUnit *_messageUnit)
 	mutex_.unlock();
 }
 
-MessageUnit * network_st::MessageManager::GetReceivedMessage()
+MessageUnit * network_client_st::MessageManager::GetReceivedMessage()
 {
 	mutex_.lock();
 	if (queue_received_message_ &&

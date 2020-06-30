@@ -1,10 +1,10 @@
 #include "Global.h"
 
-using namespace network_st;
+using namespace network_server_st;
 
-QString network_st::k_keepAlive = "KeepAlive";					///<默认心跳询问包
+QString network_server_st::k_keepAlive = "KeepAlive";					///<默认心跳询问包
 
-QString network_st::k_receipt_keepAlive = "Ark_KeepAlive";		///<默认心跳回执包
+QString network_server_st::k_receipt_keepAlive = "Ark_KeepAlive";		///<默认心跳回执包
 QMap<QString, QByteArray> k_temp_big_bytes_map_;
 bool is_out_log_ = true;
 ///<全局是否输出debug
@@ -18,25 +18,25 @@ int broadcast_interval_ = k_broadcast_interval_;			///<广播发送的默认间�
 
 bool g_is_stream_handle = true;
 
-bool network_st::IsStreamHandle()
+bool network_server_st::IsStreamHandle()
 {
 	return g_is_stream_handle;
 }
 
-void network_st::SetStreamHandle(bool _is_stream_handle /*= true*/)
+void network_server_st::SetStreamHandle(bool _is_stream_handle /*= true*/)
 {
 	g_is_stream_handle = _is_stream_handle;
 }
 
-int network_st::GetTimeout()
+int network_server_st::GetTimeout()
 {
 	return client_timeout_;
 }
-int network_st::GetBroadcastInterval()
+int network_server_st::GetBroadcastInterval()
 {
 	return broadcast_interval_;
 }
-QString network_st::GetLocalIP()
+QString network_server_st::GetLocalIP()
 {
 	qDebug() << "GetLocalIP()";
 
@@ -96,7 +96,39 @@ QString network_st::GetLocalIP()
 
 }
 
-void RemoveHeadFromByteArray(QList<MessageUnit *> *_list_messageUnit, QByteArray _byteArray_message)
+QByteArray GetWholeBytes(QString _ip, QByteArray _bytes, bool _is_receive_over)
+{
+	if (_is_receive_over)
+	{
+		if (k_temp_big_bytes_map_.contains(_ip))
+		{
+			QByteArray result(k_temp_big_bytes_map_.value(_ip));
+			result.append(_bytes);
+			k_temp_big_bytes_map_.remove(_ip);
+			return result;
+		}
+		else
+		{
+			return _bytes;
+		}
+	}
+	else
+	{
+		if (k_temp_big_bytes_map_.contains(_ip))
+		{
+			QByteArray result(k_temp_big_bytes_map_.value(_ip));
+			result.append(_bytes);
+			return result;
+		}
+		else
+		{
+			k_temp_big_bytes_map_.insert(_ip, _bytes);
+		}
+
+	}
+}
+
+void RemoveHeadFromByteArray(QList<MessageUnit *> *_list_messageUnit, QByteArray _byteArray_message, QString _ip)
 {
 	QString qstring_head = k_header_message;
 
@@ -105,6 +137,39 @@ void RemoveHeadFromByteArray(QList<MessageUnit *> *_list_messageUnit, QByteArray
 	char *c_head = byteArray_head.data();
 
 	int count_head = _byteArray_message.count(c_head);
+	if (0 == count_head)
+	{
+		/////////////////////////////////////////////////////////////////////////////
+		QByteArray *result_bytes = nullptr;
+		QByteArray temp_bytes(_byteArray_message);
+		bool is_receive_over = true;
+		if (QString(temp_bytes).contains(k_end_message_))
+		{
+			int size_end_flag = k_end_message_.size();
+			int size = temp_bytes.size();
+			int left_size = size - size_end_flag;
+			result_bytes = new QByteArray(GetWholeBytes(_ip, temp_bytes.left(left_size), is_receive_over));
+		}
+		else
+		{
+			is_receive_over = false;
+			result_bytes = &(GetWholeBytes(_ip, temp_bytes, is_receive_over));
+		}
+		///<去掉结尾标识
+		//////////////////////////////////////////////////////////////////////////
+
+		if (is_receive_over)
+		{
+			MessageUnit * messageUnit_receive = new MessageUnit();
+			//说明已不包含头，不用截取
+			messageUnit_receive->byteArray_msg = result_bytes/*byteArray_message_nohead*/;
+
+			messageUnit_receive->msg = /*byteArray_message_nohead*/result_bytes->data();
+
+			_list_messageUnit->append(messageUnit_receive);
+		}
+		return;
+	}
 
 	for (int i = 0; i < count_head * 2; i++)
 	{
@@ -125,21 +190,62 @@ void RemoveHeadFromByteArray(QList<MessageUnit *> *_list_messageUnit, QByteArray
 
 		if (head_occur_index < 0)
 		{
-			//说明已不包含头，不用截取
-			messageUnit_receive->byteArray_msg = byteArray_message_nohead;
+			/////////////////////////////////////////////////////////////////////////////
+			QByteArray *result_bytes = nullptr;
+			bool is_receive_over = true;
+			if (QString(*byteArray_message_nohead).contains(k_end_message_))
+			{
+				int size_end_flag = k_end_message_.size();
+				int size = byteArray_message_nohead->size();
+				int left_size = size - size_end_flag;
+				result_bytes = new QByteArray(GetWholeBytes(_ip, byteArray_message_nohead->left(left_size), is_receive_over));
+			}
+			else
+			{
+				is_receive_over = false;
+				result_bytes = &(GetWholeBytes(_ip, *byteArray_message_nohead, is_receive_over));
+			}
+			///<去掉结尾标识
+			//////////////////////////////////////////////////////////////////////////
 
-			messageUnit_receive->msg = byteArray_message_nohead->data();
 
-			_list_messageUnit->append(messageUnit_receive);
+			if (is_receive_over)
+			{
+				//说明已不包含头，不用截取
+				messageUnit_receive->byteArray_msg = result_bytes/*byteArray_message_nohead*/;
+
+				messageUnit_receive->msg = /*byteArray_message_nohead*/result_bytes->data();
+
+				_list_messageUnit->append(messageUnit_receive);
+			}
 		}
 		else
 		{
 			byteArray_message_nohead->truncate(head_occur_index);
 			//截取后面出现的head左边的消息
 
-			messageUnit_receive->byteArray_msg = byteArray_message_nohead;
+			/////////////////////////////////////////////////////////////////////////////
+			QByteArray *result_bytes = nullptr;
+			bool is_receive_over = true;
+			if (QString(*byteArray_message_nohead).contains(k_end_message_))
+			{
+				int size_end_flag = k_end_message_.size();
+				int size = byteArray_message_nohead->size();
+				int left_size = size - size_end_flag;
+				result_bytes = new QByteArray(GetWholeBytes(_ip, byteArray_message_nohead->left(left_size), is_receive_over));
+			}
+			else
+			{
+				is_receive_over = false;
+				result_bytes = new QByteArray((GetWholeBytes(_ip, *byteArray_message_nohead, is_receive_over)));
+			}
+			///<去掉结尾标识
+			//////////////////////////////////////////////////////////////////////////
 
-			messageUnit_receive->msg = byteArray_message_nohead->data();
+
+			messageUnit_receive->byteArray_msg = /*byteArray_message_nohead*/result_bytes;
+
+			messageUnit_receive->msg = /*byteArray_message_nohead*/result_bytes->data();
 
 			_list_messageUnit->append(messageUnit_receive);
 
@@ -152,7 +258,7 @@ void RemoveHeadFromByteArray(QList<MessageUnit *> *_list_messageUnit, QByteArray
 	}
 }
 
-QList<MessageUnit *> * network_st::UnpackMessage(QByteArray byteArray_message)
+QList<MessageUnit *> * network_server_st::UnpackMessage(QByteArray byteArray_message, QString _ip)
 {
 	QList<MessageUnit *> *list_messageUnit = new QList<MessageUnit *>();
 
@@ -171,7 +277,7 @@ QList<MessageUnit *> * network_st::UnpackMessage(QByteArray byteArray_message)
 // 		 
 // 		list_messageUnit->append(messageUnit_receive);
 
-		RemoveHeadFromByteArray(list_messageUnit, byteArray_message);
+		RemoveHeadFromByteArray(list_messageUnit, byteArray_message, _ip);
 	}
 	else
 	{
@@ -203,7 +309,7 @@ QList<MessageUnit *> * network_st::UnpackMessage(QByteArray byteArray_message)
 	return list_messageUnit;
 }
 
-MessageUnit network_st::PackageMessage(MessageUnit *_messageUnit)
+MessageUnit network_server_st::PackageMessage(MessageUnit *_messageUnit)
 {
 	MessageUnit messageUnit;
 
@@ -215,8 +321,9 @@ MessageUnit network_st::PackageMessage(MessageUnit *_messageUnit)
 		if (!qs_message.contains(k_header_message))
 		///如果没头就添加，有头则不重复添加
 		{
-			QString qs_header_message = QString("%1%2").arg(k_header_message).arg(qs_message);
-
+			//QString qs_header_message = QString("%1%2").arg(k_header_message).arg(qs_message);
+			QString qs_header_message = QString("%1%2%3").arg(k_header_message).arg(qs_message).arg(k_end_message_);
+			///<添加结尾标识
 			QByteArray *byteArray_header_message = new QByteArray(qs_header_message.toLocal8Bit());
 
 			messageUnit.msg = byteArray_header_message->data();
@@ -231,12 +338,23 @@ MessageUnit network_st::PackageMessage(MessageUnit *_messageUnit)
 			{
 				byteArray_message_head = new QByteArray(k_header_message.toLocal8Bit());
 			}
+			if (!QString(*byteArray_message_head).contains(k_end_message_))
+			{
+				byteArray_message_head->append(k_end_message_);
+				///<添加结尾标识
+			}
+
 			messageUnit.byteArray_msg = byteArray_message_head;
 			//重新打包加头
 
 		}
 		else
 		{
+			if (!QString(*_messageUnit->byteArray_msg).contains(k_end_message_))
+			{
+				_messageUnit->byteArray_msg->append(k_end_message_);
+				///<添加结尾标识
+			}
 			messageUnit = *_messageUnit;
 		}
 	}
@@ -246,7 +364,9 @@ MessageUnit network_st::PackageMessage(MessageUnit *_messageUnit)
 
 		QString qs_message_from_bytes = QString::fromLocal8Bit(c_message);
 
-		QString qs_header_message_from_bytes = QString("%1%2").arg(k_header_message).arg(qs_message_from_bytes);
+		/*QString qs_header_message_from_bytes = QString("%1%2").arg(k_header_message).arg(qs_message_from_bytes);*/
+		QString qs_header_message_from_bytes = QString("%1%2%3").arg(k_header_message).arg(qs_message_from_bytes).arg(k_end_message_);
+		///<添加结尾标识
 
 		QByteArray byteArray_header_message_from_bytes = qs_header_message_from_bytes.toLocal8Bit();
 
@@ -257,29 +377,29 @@ MessageUnit network_st::PackageMessage(MessageUnit *_messageUnit)
 	return messageUnit;
 }
 
-QString network_st::GetPeerAddressIpv4(QTcpSocket * _acceptedSocket)
+QString network_server_st::GetPeerAddressIpv4(QTcpSocket * _acceptedSocket)
 {
 	QString result = QHostAddress(_acceptedSocket->peerAddress().toIPv4Address()).toString();
 	
 	return result;
 }
 
-QString network_st::GetPeerAddressIpv4(QUdpSocket * _acceptedSocket)
+QString network_server_st::GetPeerAddressIpv4(QUdpSocket * _acceptedSocket)
 {
 	QString result = QHostAddress(_acceptedSocket->peerAddress().toIPv4Address()).toString();
 
 	return result;
 }
-void network_st::SetOutDebug(bool _is_out_debug)
+void network_server_st::SetOutDebug(bool _is_out_debug)
 {
 	is_out_log_ = _is_out_debug;
 }
-bool network_st::GetOutDebug()
+bool network_server_st::GetOutDebug()
 {
 	return is_out_log_;
 }
 
-bool network_st::SetHeartServer(QString _heartValue)
+bool network_server_st::SetHeartServer(QString _heartValue)
 {
 	k_keepAlive = _heartValue;					///<心跳询问包
 

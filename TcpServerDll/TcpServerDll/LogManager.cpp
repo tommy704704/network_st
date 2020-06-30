@@ -1,14 +1,14 @@
 #include "LogManager.h"
 #include <QTextStream>
-using namespace network_st;
+using namespace network_server_st;
 LogManager *LogManager::s_logManager_ = nullptr;
 
-network_st::LogManager::LogManager()
+network_server_st::LogManager::LogManager()
 {
 	Init();
 }
 
-network_st::LogManager::~LogManager()
+network_server_st::LogManager::~LogManager()
 {
 	mutex_.lock();
 
@@ -21,7 +21,7 @@ network_st::LogManager::~LogManager()
 	mutex_.unlock();
 }
 
-void network_st::LogManager::AppendLog(QString _logMessage)
+void network_server_st::LogManager::AppendLog(QString _logMessage)
 {
 	mutex_.lock();
 	if (queue_log_message_)
@@ -31,7 +31,7 @@ void network_st::LogManager::AppendLog(QString _logMessage)
 	mutex_.unlock();
 }
 
-void network_st::LogManager::OutLog()
+void network_server_st::LogManager::OutLog()
 {
 	mutex_.lock();
 	if (!queue_log_message_->isEmpty())
@@ -66,11 +66,11 @@ void network_st::LogManager::OutLog()
 	mutex_.unlock();
 }
 
-void network_st::LogManager::CreatSignalAndSlot()
+void network_server_st::LogManager::CreatSignalAndSlot()
 {
 }
 
-void network_st::LogManager::Init()
+void network_server_st::LogManager::Init()
 {
 	queue_log_message_ = new QQueue<QString>();
 

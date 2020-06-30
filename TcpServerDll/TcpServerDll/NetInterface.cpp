@@ -8,7 +8,7 @@
 #include "UdpReceiveThread.h"
 #include "UdpSendThread.h"
 
-using namespace network_st;
+using namespace network_server_st;
 NetInterface *NetInterface::instance_ = NULL;
 extern QString g_local_ip;
 extern QString g_sender_ip;
@@ -161,38 +161,38 @@ void NetInterface::Slot_ReceivedMessage(MessageUnit *_messageUnit)
 }
 
 
-MessageUnit * network_st::NetInterface::GetReceivedNewMessageUnit()
+MessageUnit * network_server_st::NetInterface::GetReceivedNewMessageUnit()
 {
 	return messageManager_->GetNewReceivedMessageUnit();
 }
 
-QList<Client *> * network_st::NetInterface::GetAllClient()
+QList<Client *> * network_server_st::NetInterface::GetAllClient()
 {
 	return addressManager_->GetAllClient();
 }
 
-void network_st::NetInterface::AddMessageToSend(MessageUnit *_messageUnit)
+void network_server_st::NetInterface::AddMessageToSend(MessageUnit *_messageUnit)
 {
 	messageManager_->AppendSendedMessage(_messageUnit);			///<ui和队列同步增加操作
 }
 
-void network_st::NetInterface::RemoveSendMessage(char *_msg)
+void network_server_st::NetInterface::RemoveSendMessage(char *_msg)
 {
 	messageManager_->RemoveSendMessage(_msg);
 
 }
 
-void network_st::NetInterface::AddClientAddress(Client *_client)
+void network_server_st::NetInterface::AddClientAddress(Client *_client)
 {
 	addressManager_->AddClientAddress(_client);
 }
 
-void network_st::NetInterface::RemoveClientAddress(int _index)
+void network_server_st::NetInterface::RemoveClientAddress(int _index)
 {
 	addressManager_->RemoveClientAddress(_index);
 }
 
-void network_st::NetInterface::Slot_UpdateOfflineSocket(QList<Client *> *_clients)
+void network_server_st::NetInterface::Slot_UpdateOfflineSocket(QList<Client *> *_clients)
 {
 	int size_client_offline = _clients->size();
 	for (int i = 0; i < size_client_offline; i++)

@@ -2,11 +2,11 @@
 #include "MessageManager.h"
 #include "SocketManager.h"
 
-using namespace network_st;
+using namespace network_client_st;
 
 TcpSendThread *TcpSendThread::instance_ = nullptr;
 
-network_st::TcpSendThread::~TcpSendThread()
+network_client_st::TcpSendThread::~TcpSendThread()
 {
 	is_quit_ = true;
 
@@ -25,7 +25,7 @@ network_st::TcpSendThread::~TcpSendThread()
 
 }
 
-void network_st::TcpSendThread::Slot_SendMessage(MessageUnit *_messageUnit)
+void network_client_st::TcpSendThread::Slot_SendMessage(MessageUnit *_messageUnit)
 {
 	mutex_.lock();
 
@@ -34,7 +34,7 @@ void network_st::TcpSendThread::Slot_SendMessage(MessageUnit *_messageUnit)
 	mutex_.unlock();
 }
 
-network_st::TcpSendThread::TcpSendThread() : is_quit_(false),
+network_client_st::TcpSendThread::TcpSendThread() : is_quit_(false),
 											tcpSocket_client_(nullptr)
 {
 	qDebug() << "TcpSendThread()";
@@ -42,12 +42,12 @@ network_st::TcpSendThread::TcpSendThread() : is_quit_(false),
 	Init();
 }
 
-void network_st::TcpSendThread::CreateSignalAndSlot()
+void network_client_st::TcpSendThread::CreateSignalAndSlot()
 {
 
 }
 
-void network_st::TcpSendThread::Init()
+void network_client_st::TcpSendThread::Init()
 {
 	ipv4_ = "";
 
@@ -56,7 +56,7 @@ void network_st::TcpSendThread::Init()
 	socketManager_ = SocketManager::GetInstance();
 }
 
-void network_st::TcpSendThread::run()
+void network_client_st::TcpSendThread::run()
 {
 	while (!is_quit_)
 	{

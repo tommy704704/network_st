@@ -1,5 +1,5 @@
 #include "SocketManager.h"
-using namespace network_st;
+using namespace network_client_st;
 SocketManager *SocketManager::instance_ = NULL;
 SocketManager::~SocketManager()
 {
@@ -80,7 +80,7 @@ QTcpSocket * SocketManager::GetAcceptedTcpSocketByIP(QString _ip)
     return acceptedSocket;
 }
 
-int network_st::SocketManager::GetSendTcpSocketCount()
+int network_client_st::SocketManager::GetSendTcpSocketCount()
 {
 	mutex_.lock();
 	int size = map_sended_tcpSocket_->size();
@@ -89,7 +89,7 @@ int network_st::SocketManager::GetSendTcpSocketCount()
 	return size;
 }
 
-QUdpSocket * network_st::SocketManager::GetAcceptedUdpSocketByIP(QString _ip)
+QUdpSocket * network_client_st::SocketManager::GetAcceptedUdpSocketByIP(QString _ip)
 {
 	mutex_.lock();
 
@@ -110,7 +110,7 @@ QUdpSocket * network_st::SocketManager::GetAcceptedUdpSocketByIP(QString _ip)
 	return acceptedSocket;
 }
 
-QTcpSocket * network_st::SocketManager::ReCreateSendTcpSocket(const QString _ip)
+QTcpSocket * network_client_st::SocketManager::ReCreateSendTcpSocket(const QString _ip)
 {
 	mutex_.lock();
 
@@ -156,7 +156,7 @@ void SocketManager::AppendAccpetedTcpSocket(QTcpSocket *_acceptedSocket)
 	mutex_.unlock();
 }
 
-void network_st::SocketManager::RemoveSendedTcpSocketFromConnected(QString _ip)
+void network_client_st::SocketManager::RemoveSendedTcpSocketFromConnected(QString _ip)
 {
 	QTcpSocket *tcpSocket = GetSendTcpSocketByIP(_ip);
 	if (tcpSocket)

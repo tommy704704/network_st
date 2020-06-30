@@ -9,7 +9,7 @@
 #include "UdpReceiveThread.h"
 #include "UdpSendThread.h"
 
-using namespace network_st;
+using namespace network_client_st;
 NetInterface *NetInterface::instance_ = NULL;
 extern QString g_local_ip;
 
@@ -49,7 +49,7 @@ NetInterface::~NetInterface()
 
 }
 
-QTcpSocket * network_st::NetInterface::GetSendTcpSocketByIP(QString _ip)
+QTcpSocket * network_client_st::NetInterface::GetSendTcpSocketByIP(QString _ip)
 {
 	QTcpSocket *p_result = socketManager_->GetSendTcpSocketByIP(_ip);
 	return p_result;
@@ -139,12 +139,12 @@ void NetInterface::CreateSignalAndSlot()
 
 }
 
-QList<Server*>* network_st::NetInterface::GetAllServers()
+QList<Server*>* network_client_st::NetInterface::GetAllServers()
 {
 	return addressManager_->GetAllServers();
 }
 
-MessageUnit * network_st::NetInterface::GetReceiveNewMessage()
+MessageUnit * network_client_st::NetInterface::GetReceiveNewMessage()
 {
 // 	QString receipt_msg = udpSendThread_->GetQueueLastValue();
 	MessageUnit *receipt_msg = messageManager_->GetReceivedMessage();
@@ -158,12 +158,12 @@ MessageUnit * network_st::NetInterface::GetReceiveNewMessage()
 	}
 }
 
-void network_st::NetInterface::AddSendMessage(MessageUnit *_messageUnit)
+void network_client_st::NetInterface::AddSendMessage(MessageUnit *_messageUnit)
 {
 	messageManager_->AddSendMessage(_messageUnit);
 }
 
-void network_st::NetInterface::Slot_RemoveSendedTcpSocketFromConnected(QString _ip)
+void network_client_st::NetInterface::Slot_RemoveSendedTcpSocketFromConnected(QString _ip)
 {
 	socketManager_->RemoveSendedTcpSocketFromConnected(_ip);
 }

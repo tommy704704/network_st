@@ -1,5 +1,5 @@
 #include "SocketManager.h"
-using namespace network_st;
+using namespace network_server_st;
 
 SocketManager *SocketManager::instance_ = NULL;
 
@@ -90,7 +90,7 @@ QTcpSocket * SocketManager::GetAcceptedTcpSocketByIP(QString _ip)
     return acceptedSocket;
 }
 
-QUdpSocket * network_st::SocketManager::GetAcceptedUdpSocketByIP(QString _ip)
+QUdpSocket * network_server_st::SocketManager::GetAcceptedUdpSocketByIP(QString _ip)
 {
 	QUdpSocket *acceptedSocket = NULL;
 	if (!map_accepted_udpSocket_->contains(_ip))

@@ -6,7 +6,7 @@
 #include <QThread>
 #include "Global.h"
 
-namespace network_st {
+namespace network_client_st {
 class MessageManager;
 
 class SocketManager;

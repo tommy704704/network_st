@@ -14,7 +14,7 @@
 #include <QTcpSocket>
 #include <QUdpSocket>
 #include "Global.h"
-namespace network_st{
+namespace network_client_st{
 
 class SocketManager
 {
@@ -44,7 +44,7 @@ public:
     QTcpSocket * GetSendTcpSocketByIP(QString _ip);
 	/************************************
 	* @Method:    GetSendUdpSocketByIP
-	* @FullName:  network_st::SocketManager::GetSendUdpSocketByIP
+	* @FullName:  network_client_st::SocketManager::GetSendUdpSocketByIP
 	* @Access:    public 
 	* @Returns:   QUdpSocket *
 	* @Qualifier:
@@ -63,7 +63,7 @@ public:
     QTcpSocket * GetAcceptedTcpSocketByIP(QString _ip);
 	/************************************
 	* @Method:    GetAcceptedUdpSocketByIP
-	* @FullName:  network_st::SocketManager::GetAcceptedUdpSocketByIP
+	* @FullName:  network_client_st::SocketManager::GetAcceptedUdpSocketByIP
 	* @Access:    public 
 	* @Returns:   QUdpSocket *
 	* @Qualifier:
@@ -82,7 +82,7 @@ public:
 	void AppendSendTcpSocket(QTcpSocket *_sendSocket);
 	/************************************
 	* @Method:    AppendSendUdpSocket
-	* @FullName:  network_st::SocketManager::AppendSendUdpSocket
+	* @FullName:  network_client_st::SocketManager::AppendSendUdpSocket
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
@@ -101,7 +101,7 @@ public:
     void AppendAccpetedTcpSocket(QTcpSocket *_acceptedSocket);
 	/************************************
 	* @Method:    AppendAccpetedUdpSocket
-	* @FullName:  network_st::SocketManager::AppendAccpetedUdpSocket
+	* @FullName:  network_client_st::SocketManager::AppendAccpetedUdpSocket
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
@@ -120,7 +120,7 @@ public:
     void RemoveSendedTcpSocket(QString _ip);
 	/************************************
 	* @Method:    RemoveSendedTcpSocketFromConnected
-	* @FullName:  network_st::SocketManager::RemoveSendedTcpSocketFromConnected
+	* @FullName:  network_client_st::SocketManager::RemoveSendedTcpSocketFromConnected
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
@@ -139,7 +139,7 @@ public:
     void RemoveAcceptedSocket(QString _ip);
 	/************************************
 	* @Method:    ReCreateSendTcpSocket
-	* @FullName:  network_st::SocketManager::ReCreateSendTcpSocket
+	* @FullName:  network_client_st::SocketManager::ReCreateSendTcpSocket
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:

@@ -3,7 +3,7 @@
 #include "QDateTime"
 #include "QFile"
 
-using namespace network_st;
+using namespace network_server_st;
 NetPublicInterface *NetPublicInterface::instance_ = NULL;
 
 extern QString g_local_ip;
@@ -73,7 +73,7 @@ void NetPublicInterface::SetLocalIpv4(QString _ipv4)
 
 }
 
-void network_st::NetPublicInterface::SetTimeOut(const int _timeout)
+void network_server_st::NetPublicInterface::SetTimeOut(const int _timeout)
 {
 	if (_timeout <= 0)
 	{
@@ -84,7 +84,7 @@ void network_st::NetPublicInterface::SetTimeOut(const int _timeout)
 		client_timeout_ = _timeout;
 	}
 }
-void network_st::NetPublicInterface::SetBroadcastInterval(const int _interval)
+void network_server_st::NetPublicInterface::SetBroadcastInterval(const int _interval)
 {
 	if (_interval <= 0)
 	{
@@ -140,7 +140,7 @@ NetPublicInterface::~NetPublicInterface()
 	netInterface_ = NULL;
 }
 
-bool network_st::NetPublicInterface::SetHeartServer(QString _heartValue)
+bool network_server_st::NetPublicInterface::SetHeartServer(QString _heartValue)
 {
 	SetHeartServer(_heartValue);
 	return true;
@@ -169,33 +169,33 @@ void NetPublicInterface::CreateSignalAndSlot()
 	
 }
 
-MessageUnit * network_st::NetPublicInterface::GetReceivedNewMessageUnit()
+MessageUnit * network_server_st::NetPublicInterface::GetReceivedNewMessageUnit()
 {
 	return netInterface_->GetReceivedNewMessageUnit();
 }
 
-QList<Client *> * network_st::NetPublicInterface::GetAllClient()
+QList<Client *> * network_server_st::NetPublicInterface::GetAllClient()
 {
 	return netInterface_->GetAllClient();
 }
 
-void network_st::NetPublicInterface::AddMessageToSend(MessageUnit *_messageUnit)
+void network_server_st::NetPublicInterface::AddMessageToSend(MessageUnit *_messageUnit)
 {
 	netInterface_->AddMessageToSend(_messageUnit);
 }
 
-void network_st::NetPublicInterface::RemoveSendMessage(char *_msg)
+void network_server_st::NetPublicInterface::RemoveSendMessage(char *_msg)
 {
 	netInterface_->RemoveSendMessage(_msg);
 
 }
 
-void network_st::NetPublicInterface::AddClientAddress(Client *_client)
+void network_server_st::NetPublicInterface::AddClientAddress(Client *_client)
 {
 	netInterface_->AddClientAddress(_client);
 }
 
-void network_st::NetPublicInterface::RemoveClientAddress(int _index)
+void network_server_st::NetPublicInterface::RemoveClientAddress(int _index)
 {
 	netInterface_->RemoveClientAddress(_index);
 }

@@ -1,5 +1,5 @@
-#ifndef GLOBAL_H
-#define GLOBAL_H
+#ifndef GLOBAL_SERVER_H
+#define GLOBAL_SERVER_H
 /************************************!
 * @file global.h
 *
@@ -23,10 +23,10 @@
 
 #define UDP_HEARTBEAT_CLIENT_PORT 60066
 
-namespace network_st {
+namespace network_server_st {
 extern QString k_keepAlive;
 extern QString k_receipt_keepAlive;
-extern QMap<QString, QByteArray> k_temp_big_bytes_map_;
+
 //const QString k_keepAlive = "KeepAlive";					///<默认心跳询问包
 
 //const QString k_receipt_keepAlive = "Ark_KeepAlive";		///<默认心跳回执包
@@ -42,7 +42,7 @@ const int k_client_timeout_ = 30;						///<客户端超时的默认时间30，�
 const int k_broadcast_interval_ = 3;					///<广播发送的默认间隔3，单位秒
 
 const QString k_header_message = "-head-";				///<消息头
-const QString k_end_message = "-end-";		///<消息结束，解决大消息融合
+const QString k_end_message_ = "-end-";		///<消息结束，解决大消息融合
 
 /************************************************************************/
 /*消息默认是QByteArray接收QDataStream这种形式因为业务需要，IsStreamHandle返回为true
@@ -117,7 +117,7 @@ QString GetLocalIP();
 * @Parameter: QByteArray byteArray_message
 * @comment: 拆解消息头
 ************************************/
-QList<MessageUnit *> * UnpackMessage(QByteArray byteArray_message);
+QList<MessageUnit *> * UnpackMessage(QByteArray byteArray_message, QString _ip);
 
 MessageUnit PackageMessage(MessageUnit *_messageUnit);
 
@@ -158,4 +158,4 @@ bool GetOutDebug();
 bool SetHeartServer(QString _heartValue);
 }
 
-#endif // GLOBAL_H
+#endif // GLOBAL_SERVER_H

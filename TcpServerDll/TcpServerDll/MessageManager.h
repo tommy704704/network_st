@@ -12,7 +12,7 @@
 #include <QQueue>
 #include "QString"
 #include "Global.h"
-namespace network_st{
+namespace network_server_st{
 
 class MessageManager
 {
@@ -56,7 +56,7 @@ public:
 	void RemoveSendedMessage();
 	/************************************
 	* @Method:    RemoveSendMessage
-	* @FullName:  network_st::MessageManager::RemoveSendMessage
+	* @FullName:  network_server_st::MessageManager::RemoveSendMessage
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
@@ -93,7 +93,7 @@ public:
 	int GetSizeSendingMessage();
 	/************************************
 	* @Method:    GetNewReceivedMessageUnit
-	* @FullName:  network_st::MessageManager::GetNewReceivedMessageUnit
+	* @FullName:  network_server_st::MessageManager::GetNewReceivedMessageUnit
 	* @Access:    public 
 	* @Returns:   MessageUnit *
 	* @Qualifier:

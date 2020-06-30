@@ -1,6 +1,6 @@
 #include "NewTcpServer.h"
 #include <QDateTime>
-using namespace network_st;
+using namespace network_server_st;
 extern QString g_local_ip;
 extern QString g_sender_ip;
 extern QString g_server_ip;
@@ -94,12 +94,12 @@ void NewTcpServer::Slot_NewConnection()
 	///<输出tcp连接日志
 }
 
-void network_st::NewTcpServer::Slot_Disconnected()
+void network_server_st::NewTcpServer::Slot_Disconnected()
 {
 
 }
 
-void network_st::NewTcpServer::Slot_DisplayError(QAbstractSocket::SocketError _error)
+void network_server_st::NewTcpServer::Slot_DisplayError(QAbstractSocket::SocketError _error)
 {
 	QTcpSocket *tcpSocket_accepeted = qobject_cast<QTcpSocket *>(sender());
 
@@ -129,7 +129,7 @@ void network_st::NewTcpServer::Slot_DisplayError(QAbstractSocket::SocketError _e
 	addressManager_->SetClientOffline(client_offline);
 }
 
-void network_st::NewTcpServer::Slot_StateChanged(QAbstractSocket::SocketState _socketState)
+void network_server_st::NewTcpServer::Slot_StateChanged(QAbstractSocket::SocketState _socketState)
 {
 	QTcpSocket *acceptedSocket = nullptr;
 	if (QAbstractSocket::ClosingState == _socketState)
@@ -157,12 +157,12 @@ void network_st::NewTcpServer::Slot_StateChanged(QAbstractSocket::SocketState _s
 
 }
 
-// void network_st::NewTcpServer::incomingConnection(qintptr socketDescriptor)
+// void network_server_st::NewTcpServer::incomingConnection(qintptr socketDescriptor)
 // {
 // 	tcpSendThread_->socketDescriptor_ = socketDescriptor;
 // }
 
-QString network_st::NewTcpServer::GetConnectionInfromation(const int _type)
+QString network_server_st::NewTcpServer::GetConnectionInfromation(const int _type)
 {
 	QString result = "none information";
 	switch (_type)

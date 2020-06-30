@@ -12,7 +12,7 @@
 #include <QThread>
 #include <QUdpSocket>
 #include "Global.h"
-namespace network_st {
+namespace network_client_st {
 
 class UdpSendThread : public QThread
 {

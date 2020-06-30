@@ -13,7 +13,7 @@
 #include <QQueue>
 #include <QString>
 #include <QTextStream>
-namespace network_st{
+namespace network_server_st{
 /************************************!
  * @class 
  *
@@ -38,7 +38,7 @@ public:
 
 	/************************************
 	* @Method:    AppendLog
-	* @FullName:  network_st::LogManager::AppendLog
+	* @FullName:  network_server_st::LogManager::AppendLog
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
@@ -48,7 +48,7 @@ public:
 	void AppendLog(QString _logMessage);
 	/************************************
 	* @Method:    OutLog
-	* @FullName:  network_st::LogManager::OutLog
+	* @FullName:  network_server_st::LogManager::OutLog
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:

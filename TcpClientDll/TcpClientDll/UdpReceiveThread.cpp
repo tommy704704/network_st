@@ -5,7 +5,7 @@
 
 #include <QDateTime>
 
-using namespace network_st;
+using namespace network_client_st;
 
 extern QString g_server_ip;
 extern QString g_local_ip;

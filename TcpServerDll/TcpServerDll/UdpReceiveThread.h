@@ -12,7 +12,7 @@
 #include <QThread>
 #include <QUdpSocket>
 #include "AddressManager.h"
-namespace network_st{
+namespace network_server_st{
 class UdpReceiveThread : public QThread
 {
 	Q_OBJECT

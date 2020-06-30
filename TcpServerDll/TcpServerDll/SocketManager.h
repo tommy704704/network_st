@@ -14,7 +14,7 @@
 #include <QTcpSocket>
 #include <QUdpSocket>
 #include "Global.h"
-namespace network_st{
+namespace network_server_st{
 
 class SocketManager
 {
@@ -43,7 +43,7 @@ public:
     QTcpSocket * GetSendTcpSocketByIP(QString _ip);
 	/************************************
 	* @Method:    GetSendUdpSocketByUP
-	* @FullName:  network_st::SocketManager::GetSendUdpSocketByUP
+	* @FullName:  network_server_st::SocketManager::GetSendUdpSocketByUP
 	* @Access:    public 
 	* @Returns:   QUdpSocket *
 	* @Qualifier:
@@ -62,7 +62,7 @@ public:
     QTcpSocket * GetAcceptedTcpSocketByIP(QString _ip);
 	/************************************
 	* @Method:    GetAcceptedUdpSocketByIP
-	* @FullName:  network_st::SocketManager::GetAcceptedUdpSocketByIP
+	* @FullName:  network_server_st::SocketManager::GetAcceptedUdpSocketByIP
 	* @Access:    public 
 	* @Returns:   QUdpSocket *
 	* @Qualifier:
@@ -81,7 +81,7 @@ public:
     void AppendSendTcpSocket(MessageUnit *_messageUnit);
 	/************************************
 	* @Method:    AppendSendUdpSocket
-	* @FullName:  network_st::SocketManager::AppendSendUdpSocket
+	* @FullName:  network_server_st::SocketManager::AppendSendUdpSocket
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
@@ -100,7 +100,7 @@ public:
     void AppendAccpetedTcpSocket(QTcpSocket *_acceptedSocket);
 	/************************************
 	* @Method:    AppendAccpetedUdpSocket
-	* @FullName:  network_st::SocketManager::AppendAccpetedUdpSocket
+	* @FullName:  network_server_st::SocketManager::AppendAccpetedUdpSocket
 	* @Access:    public 
 	* @Returns:   void
 	* @Qualifier:
