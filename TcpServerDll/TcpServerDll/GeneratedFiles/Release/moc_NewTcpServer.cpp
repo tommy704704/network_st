@@ -20,38 +20,38 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_network_st__NewTcpServer_t {
+struct qt_meta_stringdata_network_server_st__NewTcpServer_t {
     QByteArrayData data[10];
-    char stringdata0[177];
+    char stringdata0[184];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_network_st__NewTcpServer_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_network_server_st__NewTcpServer_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_network_st__NewTcpServer_t qt_meta_stringdata_network_st__NewTcpServer = {
+static const qt_meta_stringdata_network_server_st__NewTcpServer_t qt_meta_stringdata_network_server_st__NewTcpServer = {
     {
-QT_MOC_LITERAL(0, 0, 24), // "network_st::NewTcpServer"
-QT_MOC_LITERAL(1, 25, 18), // "Slot_NewConnection"
-QT_MOC_LITERAL(2, 44, 0), // ""
-QT_MOC_LITERAL(3, 45, 17), // "Slot_Disconnected"
-QT_MOC_LITERAL(4, 63, 17), // "Slot_DisplayError"
-QT_MOC_LITERAL(5, 81, 28), // "QAbstractSocket::SocketError"
-QT_MOC_LITERAL(6, 110, 6), // "_error"
-QT_MOC_LITERAL(7, 117, 17), // "Slot_StateChanged"
-QT_MOC_LITERAL(8, 135, 28), // "QAbstractSocket::SocketState"
-QT_MOC_LITERAL(9, 164, 12) // "_socketState"
+QT_MOC_LITERAL(0, 0, 31), // "network_server_st::NewTcpServer"
+QT_MOC_LITERAL(1, 32, 18), // "Slot_NewConnection"
+QT_MOC_LITERAL(2, 51, 0), // ""
+QT_MOC_LITERAL(3, 52, 17), // "Slot_Disconnected"
+QT_MOC_LITERAL(4, 70, 17), // "Slot_DisplayError"
+QT_MOC_LITERAL(5, 88, 28), // "QAbstractSocket::SocketError"
+QT_MOC_LITERAL(6, 117, 6), // "_error"
+QT_MOC_LITERAL(7, 124, 17), // "Slot_StateChanged"
+QT_MOC_LITERAL(8, 142, 28), // "QAbstractSocket::SocketState"
+QT_MOC_LITERAL(9, 171, 12) // "_socketState"
 
     },
-    "network_st::NewTcpServer\0Slot_NewConnection\0"
-    "\0Slot_Disconnected\0Slot_DisplayError\0"
-    "QAbstractSocket::SocketError\0_error\0"
-    "Slot_StateChanged\0QAbstractSocket::SocketState\0"
-    "_socketState"
+    "network_server_st::NewTcpServer\0"
+    "Slot_NewConnection\0\0Slot_Disconnected\0"
+    "Slot_DisplayError\0QAbstractSocket::SocketError\0"
+    "_error\0Slot_StateChanged\0"
+    "QAbstractSocket::SocketState\0_socketState"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_network_st__NewTcpServer[] = {
+static const uint qt_meta_data_network_server_st__NewTcpServer[] = {
 
  // content:
        7,       // revision
@@ -79,7 +79,7 @@ static const uint qt_meta_data_network_st__NewTcpServer[] = {
        0        // eod
 };
 
-void network_st::NewTcpServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void network_server_st::NewTcpServer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         NewTcpServer *_t = static_cast<NewTcpServer *>(_o);
@@ -112,26 +112,26 @@ void network_st::NewTcpServer::qt_static_metacall(QObject *_o, QMetaObject::Call
     }
 }
 
-const QMetaObject network_st::NewTcpServer::staticMetaObject = {
-    { &QObject::staticMetaObject, qt_meta_stringdata_network_st__NewTcpServer.data,
-      qt_meta_data_network_st__NewTcpServer,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject network_server_st::NewTcpServer::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_network_server_st__NewTcpServer.data,
+      qt_meta_data_network_server_st__NewTcpServer,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *network_st::NewTcpServer::metaObject() const
+const QMetaObject *network_server_st::NewTcpServer::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *network_st::NewTcpServer::qt_metacast(const char *_clname)
+void *network_server_st::NewTcpServer::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_network_st__NewTcpServer.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_network_server_st__NewTcpServer.stringdata0))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int network_st::NewTcpServer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int network_server_st::NewTcpServer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)

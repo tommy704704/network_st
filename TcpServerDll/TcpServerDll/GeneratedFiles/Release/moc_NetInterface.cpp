@@ -21,34 +21,34 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_network_st__NetInterface_t {
+struct qt_meta_stringdata_network_server_st__NetInterface_t {
     QByteArrayData data[14];
-    char stringdata0[246];
+    char stringdata0[253];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_network_st__NetInterface_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_network_server_st__NetInterface_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_network_st__NetInterface_t qt_meta_stringdata_network_st__NetInterface = {
+static const qt_meta_stringdata_network_server_st__NetInterface_t qt_meta_stringdata_network_server_st__NetInterface = {
     {
-QT_MOC_LITERAL(0, 0, 24), // "network_st::NetInterface"
-QT_MOC_LITERAL(1, 25, 22), // "Signal_ReceivedMessage"
-QT_MOC_LITERAL(2, 48, 0), // ""
-QT_MOC_LITERAL(3, 49, 12), // "MessageUnit*"
-QT_MOC_LITERAL(4, 62, 12), // "_messageUnit"
-QT_MOC_LITERAL(5, 75, 26), // "Signal_UpdateUIReplyTcpMsg"
-QT_MOC_LITERAL(6, 102, 24), // "Signal_UpdateAddressList"
-QT_MOC_LITERAL(7, 127, 7), // "Client*"
-QT_MOC_LITERAL(8, 135, 7), // "_client"
-QT_MOC_LITERAL(9, 143, 31), // "Signal_UpdateOfflineAddressList"
-QT_MOC_LITERAL(10, 175, 15), // "QList<Client*>*"
-QT_MOC_LITERAL(11, 191, 8), // "_clients"
-QT_MOC_LITERAL(12, 200, 20), // "Slot_ReceivedMessage"
-QT_MOC_LITERAL(13, 221, 24) // "Slot_UpdateOfflineSocket"
+QT_MOC_LITERAL(0, 0, 31), // "network_server_st::NetInterface"
+QT_MOC_LITERAL(1, 32, 22), // "Signal_ReceivedMessage"
+QT_MOC_LITERAL(2, 55, 0), // ""
+QT_MOC_LITERAL(3, 56, 12), // "MessageUnit*"
+QT_MOC_LITERAL(4, 69, 12), // "_messageUnit"
+QT_MOC_LITERAL(5, 82, 26), // "Signal_UpdateUIReplyTcpMsg"
+QT_MOC_LITERAL(6, 109, 24), // "Signal_UpdateAddressList"
+QT_MOC_LITERAL(7, 134, 7), // "Client*"
+QT_MOC_LITERAL(8, 142, 7), // "_client"
+QT_MOC_LITERAL(9, 150, 31), // "Signal_UpdateOfflineAddressList"
+QT_MOC_LITERAL(10, 182, 15), // "QList<Client*>*"
+QT_MOC_LITERAL(11, 198, 8), // "_clients"
+QT_MOC_LITERAL(12, 207, 20), // "Slot_ReceivedMessage"
+QT_MOC_LITERAL(13, 228, 24) // "Slot_UpdateOfflineSocket"
 
     },
-    "network_st::NetInterface\0"
+    "network_server_st::NetInterface\0"
     "Signal_ReceivedMessage\0\0MessageUnit*\0"
     "_messageUnit\0Signal_UpdateUIReplyTcpMsg\0"
     "Signal_UpdateAddressList\0Client*\0"
@@ -58,7 +58,7 @@ QT_MOC_LITERAL(13, 221, 24) // "Slot_UpdateOfflineSocket"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_network_st__NetInterface[] = {
+static const uint qt_meta_data_network_server_st__NetInterface[] = {
 
  // content:
        7,       // revision
@@ -94,7 +94,7 @@ static const uint qt_meta_data_network_st__NetInterface[] = {
        0        // eod
 };
 
-void network_st::NetInterface::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void network_server_st::NetInterface::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         NetInterface *_t = static_cast<NetInterface *>(_o);
@@ -141,26 +141,26 @@ void network_st::NetInterface::qt_static_metacall(QObject *_o, QMetaObject::Call
     }
 }
 
-const QMetaObject network_st::NetInterface::staticMetaObject = {
-    { &QObject::staticMetaObject, qt_meta_stringdata_network_st__NetInterface.data,
-      qt_meta_data_network_st__NetInterface,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject network_server_st::NetInterface::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_network_server_st__NetInterface.data,
+      qt_meta_data_network_server_st__NetInterface,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *network_st::NetInterface::metaObject() const
+const QMetaObject *network_server_st::NetInterface::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *network_st::NetInterface::qt_metacast(const char *_clname)
+void *network_server_st::NetInterface::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_network_st__NetInterface.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_network_server_st__NetInterface.stringdata0))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int network_st::NetInterface::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int network_server_st::NetInterface::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -178,28 +178,28 @@ int network_st::NetInterface::qt_metacall(QMetaObject::Call _c, int _id, void **
 }
 
 // SIGNAL 0
-void network_st::NetInterface::Signal_ReceivedMessage(MessageUnit * _t1)
+void network_server_st::NetInterface::Signal_ReceivedMessage(MessageUnit * _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
-void network_st::NetInterface::Signal_UpdateUIReplyTcpMsg(MessageUnit * _t1)
+void network_server_st::NetInterface::Signal_UpdateUIReplyTcpMsg(MessageUnit * _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
-void network_st::NetInterface::Signal_UpdateAddressList(Client * _t1)
+void network_server_st::NetInterface::Signal_UpdateAddressList(Client * _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 
 // SIGNAL 3
-void network_st::NetInterface::Signal_UpdateOfflineAddressList(QList<Client*> * _t1)
+void network_server_st::NetInterface::Signal_UpdateOfflineAddressList(QList<Client*> * _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);

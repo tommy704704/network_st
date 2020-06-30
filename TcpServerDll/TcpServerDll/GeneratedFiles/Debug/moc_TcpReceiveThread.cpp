@@ -20,32 +20,32 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_network_st__TcpReceiveThread_t {
+struct qt_meta_stringdata_network_server_st__TcpReceiveThread_t {
     QByteArrayData data[6];
-    char stringdata0[94];
+    char stringdata0[101];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_network_st__TcpReceiveThread_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_network_server_st__TcpReceiveThread_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_network_st__TcpReceiveThread_t qt_meta_stringdata_network_st__TcpReceiveThread = {
+static const qt_meta_stringdata_network_server_st__TcpReceiveThread_t qt_meta_stringdata_network_server_st__TcpReceiveThread = {
     {
-QT_MOC_LITERAL(0, 0, 28), // "network_st::TcpReceiveThread"
-QT_MOC_LITERAL(1, 29, 22), // "Signal_ReceivedMessage"
-QT_MOC_LITERAL(2, 52, 0), // ""
-QT_MOC_LITERAL(3, 53, 12), // "MessageUnit*"
-QT_MOC_LITERAL(4, 66, 12), // "_messageUnit"
-QT_MOC_LITERAL(5, 79, 14) // "Slot_ReadyRead"
+QT_MOC_LITERAL(0, 0, 35), // "network_server_st::TcpReceive..."
+QT_MOC_LITERAL(1, 36, 22), // "Signal_ReceivedMessage"
+QT_MOC_LITERAL(2, 59, 0), // ""
+QT_MOC_LITERAL(3, 60, 12), // "MessageUnit*"
+QT_MOC_LITERAL(4, 73, 12), // "_messageUnit"
+QT_MOC_LITERAL(5, 86, 14) // "Slot_ReadyRead"
 
     },
-    "network_st::TcpReceiveThread\0"
+    "network_server_st::TcpReceiveThread\0"
     "Signal_ReceivedMessage\0\0MessageUnit*\0"
     "_messageUnit\0Slot_ReadyRead"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_network_st__TcpReceiveThread[] = {
+static const uint qt_meta_data_network_server_st__TcpReceiveThread[] = {
 
  // content:
        7,       // revision
@@ -73,7 +73,7 @@ static const uint qt_meta_data_network_st__TcpReceiveThread[] = {
        0        // eod
 };
 
-void network_st::TcpReceiveThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void network_server_st::TcpReceiveThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         TcpReceiveThread *_t = static_cast<TcpReceiveThread *>(_o);
@@ -95,26 +95,26 @@ void network_st::TcpReceiveThread::qt_static_metacall(QObject *_o, QMetaObject::
     }
 }
 
-const QMetaObject network_st::TcpReceiveThread::staticMetaObject = {
-    { &QThread::staticMetaObject, qt_meta_stringdata_network_st__TcpReceiveThread.data,
-      qt_meta_data_network_st__TcpReceiveThread,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject network_server_st::TcpReceiveThread::staticMetaObject = {
+    { &QThread::staticMetaObject, qt_meta_stringdata_network_server_st__TcpReceiveThread.data,
+      qt_meta_data_network_server_st__TcpReceiveThread,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *network_st::TcpReceiveThread::metaObject() const
+const QMetaObject *network_server_st::TcpReceiveThread::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *network_st::TcpReceiveThread::qt_metacast(const char *_clname)
+void *network_server_st::TcpReceiveThread::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_network_st__TcpReceiveThread.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_network_server_st__TcpReceiveThread.stringdata0))
         return static_cast<void*>(this);
     return QThread::qt_metacast(_clname);
 }
 
-int network_st::TcpReceiveThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int network_server_st::TcpReceiveThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QThread::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -132,7 +132,7 @@ int network_st::TcpReceiveThread::qt_metacall(QMetaObject::Call _c, int _id, voi
 }
 
 // SIGNAL 0
-void network_st::TcpReceiveThread::Signal_ReceivedMessage(MessageUnit * _t1)
+void network_server_st::TcpReceiveThread::Signal_ReceivedMessage(MessageUnit * _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

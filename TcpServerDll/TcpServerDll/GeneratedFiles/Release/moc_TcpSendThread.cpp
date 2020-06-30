@@ -20,28 +20,28 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_network_st__TcpSendThread_t {
+struct qt_meta_stringdata_network_server_st__TcpSendThread_t {
     QByteArrayData data[3];
-    char stringdata0[46];
+    char stringdata0[53];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_network_st__TcpSendThread_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_network_server_st__TcpSendThread_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_network_st__TcpSendThread_t qt_meta_stringdata_network_st__TcpSendThread = {
+static const qt_meta_stringdata_network_server_st__TcpSendThread_t qt_meta_stringdata_network_server_st__TcpSendThread = {
     {
-QT_MOC_LITERAL(0, 0, 25), // "network_st::TcpSendThread"
-QT_MOC_LITERAL(1, 26, 18), // "Slot_NewConnection"
-QT_MOC_LITERAL(2, 45, 0) // ""
+QT_MOC_LITERAL(0, 0, 32), // "network_server_st::TcpSendThread"
+QT_MOC_LITERAL(1, 33, 18), // "Slot_NewConnection"
+QT_MOC_LITERAL(2, 52, 0) // ""
 
     },
-    "network_st::TcpSendThread\0Slot_NewConnection\0"
-    ""
+    "network_server_st::TcpSendThread\0"
+    "Slot_NewConnection\0"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_network_st__TcpSendThread[] = {
+static const uint qt_meta_data_network_server_st__TcpSendThread[] = {
 
  // content:
        7,       // revision
@@ -63,7 +63,7 @@ static const uint qt_meta_data_network_st__TcpSendThread[] = {
        0        // eod
 };
 
-void network_st::TcpSendThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void network_server_st::TcpSendThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         TcpSendThread *_t = static_cast<TcpSendThread *>(_o);
@@ -76,26 +76,26 @@ void network_st::TcpSendThread::qt_static_metacall(QObject *_o, QMetaObject::Cal
     Q_UNUSED(_a);
 }
 
-const QMetaObject network_st::TcpSendThread::staticMetaObject = {
-    { &QThread::staticMetaObject, qt_meta_stringdata_network_st__TcpSendThread.data,
-      qt_meta_data_network_st__TcpSendThread,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject network_server_st::TcpSendThread::staticMetaObject = {
+    { &QThread::staticMetaObject, qt_meta_stringdata_network_server_st__TcpSendThread.data,
+      qt_meta_data_network_server_st__TcpSendThread,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *network_st::TcpSendThread::metaObject() const
+const QMetaObject *network_server_st::TcpSendThread::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *network_st::TcpSendThread::qt_metacast(const char *_clname)
+void *network_server_st::TcpSendThread::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_network_st__TcpSendThread.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_network_server_st__TcpSendThread.stringdata0))
         return static_cast<void*>(this);
     return QThread::qt_metacast(_clname);
 }
 
-int network_st::TcpSendThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int network_server_st::TcpSendThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QThread::qt_metacall(_c, _id, _a);
     if (_id < 0)

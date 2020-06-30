@@ -3,20 +3,20 @@
   <PropertyGroup />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <QTDIR>C:\Qt\Qt5.9.3\5.9.3\msvc2015</QTDIR>
-    <LocalDebuggerEnvironment>PATH=$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
     <LocalDebuggerCommand>D:\project_test\vs2015_project\ServerDllTest\Win32\Debug\ServerDllTest.exe</LocalDebuggerCommand>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <RemoteDebuggerCommand>E:\songtao\test_debug\PianoClassroom-Teacher.exe</RemoteDebuggerCommand>
-    <RemoteDebuggerWorkingDirectory>E:\songtao\test_debug</RemoteDebuggerWorkingDirectory>
-    <RemoteDebuggerServerName>192.168.0.168</RemoteDebuggerServerName>
+    <RemoteDebuggerCommand>D:\Q\feiq\Recv Files\Debug(2)\ServerDllTest.exe</RemoteDebuggerCommand>
+    <RemoteDebuggerWorkingDirectory>D:\Q\feiq\Recv Files\Debug(2)</RemoteDebuggerWorkingDirectory>
+    <RemoteDebuggerServerName>192.168.0.225</RemoteDebuggerServerName>
     <RemoteDebuggerConnection>RemoteWithoutAuthentication</RemoteDebuggerConnection>
-    <DeploymentDirectory>E:\songtao\test_debug</DeploymentDirectory>
+    <DeploymentDirectory>D:\Q\feiq\Recv Files\Debug(2)</DeploymentDirectory>
     <RemoteDebuggerDeployDebugCppRuntime>true</RemoteDebuggerDeployDebugCppRuntime>
+    <LocalDebuggerEnvironment>PATH=$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <QTDIR>C:\Qt\Qt5.9.3\5.9.3\msvc2015</QTDIR>
-    <LocalDebuggerEnvironment>PATH=$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerCommand>D:\project_test\vs2015_project\ServerDllTest\Win32\Release\ServerDllTest.exe</LocalDebuggerCommand>
+    <LocalDebuggerEnvironment>PATH=$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
   </PropertyGroup>
 </Project>

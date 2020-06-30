@@ -3,26 +3,26 @@
   <PropertyGroup />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <QTDIR>C:\Qt\Qt5.9.3\5.9.3\msvc2015</QTDIR>
-    <LocalDebuggerEnvironment>PATH=$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
     <LocalDebuggerCommand>D:\project_test\vs2015_project\ClientDllTest\Win32\Debug\ClientDllTest.exe</LocalDebuggerCommand>
-    <DebuggerFlavor>WindowsRemoteDebugger</DebuggerFlavor>
-    <RemoteDebuggerCommand>E:\songtao\test_client_debug_2015\NetClientDemo.exe</RemoteDebuggerCommand>
-    <RemoteDebuggerWorkingDirectory>E:\songtao\test_client_debug_2015\</RemoteDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <RemoteDebuggerCommand>D:\Q\feiq\Recv Files\Debug(1)\ClientDllTest.exe</RemoteDebuggerCommand>
+    <RemoteDebuggerWorkingDirectory>D:\Q\feiq\Recv Files\Debug(1)</RemoteDebuggerWorkingDirectory>
     <RemoteDebuggerConnection>RemoteWithoutAuthentication</RemoteDebuggerConnection>
-    <DeploymentDirectory>E:\songtao\test_client_debug_2015\</DeploymentDirectory>
+    <DeploymentDirectory>D:\Q\feiq\Recv Files\Debug(1)</DeploymentDirectory>
     <RemoteDebuggerDeployDebugCppRuntime>true</RemoteDebuggerDeployDebugCppRuntime>
-    <RemoteDebuggerServerName>192.168.0.199</RemoteDebuggerServerName>
+    <RemoteDebuggerServerName>192.168.0.225</RemoteDebuggerServerName>
+    <LocalDebuggerEnvironment>PATH=$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <QTDIR>C:\Qt\Qt5.9.3\5.9.3\msvc2015</QTDIR>
-    <LocalDebuggerEnvironment>PATH=$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
-    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <RemoteDebuggerCommand>E:\stao\project_exe\TcpClientTest_exe\debug\ClientDllTest.exe</RemoteDebuggerCommand>
-    <RemoteDebuggerWorkingDirectory>E:\stao\project_exe\TcpClientTest_exe\debug</RemoteDebuggerWorkingDirectory>
-    <RemoteDebuggerServerName>192.168.0.165</RemoteDebuggerServerName>
+    <DebuggerFlavor>WindowsRemoteDebugger</DebuggerFlavor>
+    <RemoteDebuggerCommand>D:\Q\feiq\Recv Files\Debug(1)\ClientDllTest.exe</RemoteDebuggerCommand>
+    <RemoteDebuggerWorkingDirectory>D:\Q\feiq\Recv Files\Debug(1)</RemoteDebuggerWorkingDirectory>
+    <RemoteDebuggerServerName>192.168.0.225</RemoteDebuggerServerName>
     <RemoteDebuggerConnection>RemoteWithoutAuthentication</RemoteDebuggerConnection>
-    <DeploymentDirectory>E:\stao\project_exe\TcpClientTest_exe\debug</DeploymentDirectory>
+    <DeploymentDirectory>D:\Q\feiq\Recv Files\Debug(1)</DeploymentDirectory>
     <RemoteDebuggerDeployDebugCppRuntime>true</RemoteDebuggerDeployDebugCppRuntime>
     <LocalDebuggerCommand>D:\project_test\vs2015_project\ClientDllTest\Win32\Release\ClientDllTest.exe</LocalDebuggerCommand>
+    <LocalDebuggerEnvironment>PATH=$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(QTDIR)\bin%3b"$(QTDIR)\bin%3b$(PATH)</LocalDebuggerEnvironment>
   </PropertyGroup>
 </Project>

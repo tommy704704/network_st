@@ -20,34 +20,34 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_network_st__TcpSendThread_t {
+struct qt_meta_stringdata_network_client_st__TcpSendThread_t {
     QByteArrayData data[7];
-    char stringdata0[120];
+    char stringdata0[127];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_network_st__TcpSendThread_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_network_client_st__TcpSendThread_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_network_st__TcpSendThread_t qt_meta_stringdata_network_st__TcpSendThread = {
+static const qt_meta_stringdata_network_client_st__TcpSendThread_t qt_meta_stringdata_network_client_st__TcpSendThread = {
     {
-QT_MOC_LITERAL(0, 0, 25), // "network_st::TcpSendThread"
-QT_MOC_LITERAL(1, 26, 18), // "Signal_SendMessage"
-QT_MOC_LITERAL(2, 45, 0), // ""
-QT_MOC_LITERAL(3, 46, 12), // "MessageUnit*"
-QT_MOC_LITERAL(4, 59, 12), // "_messageUnit"
-QT_MOC_LITERAL(5, 72, 30), // "Signal_UpdateUITcpReplyMessage"
-QT_MOC_LITERAL(6, 103, 16) // "Slot_SendMessage"
+QT_MOC_LITERAL(0, 0, 32), // "network_client_st::TcpSendThread"
+QT_MOC_LITERAL(1, 33, 18), // "Signal_SendMessage"
+QT_MOC_LITERAL(2, 52, 0), // ""
+QT_MOC_LITERAL(3, 53, 12), // "MessageUnit*"
+QT_MOC_LITERAL(4, 66, 12), // "_messageUnit"
+QT_MOC_LITERAL(5, 79, 30), // "Signal_UpdateUITcpReplyMessage"
+QT_MOC_LITERAL(6, 110, 16) // "Slot_SendMessage"
 
     },
-    "network_st::TcpSendThread\0Signal_SendMessage\0"
-    "\0MessageUnit*\0_messageUnit\0"
-    "Signal_UpdateUITcpReplyMessage\0"
+    "network_client_st::TcpSendThread\0"
+    "Signal_SendMessage\0\0MessageUnit*\0"
+    "_messageUnit\0Signal_UpdateUITcpReplyMessage\0"
     "Slot_SendMessage"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_network_st__TcpSendThread[] = {
+static const uint qt_meta_data_network_client_st__TcpSendThread[] = {
 
  // content:
        7,       // revision
@@ -77,7 +77,7 @@ static const uint qt_meta_data_network_st__TcpSendThread[] = {
        0        // eod
 };
 
-void network_st::TcpSendThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void network_client_st::TcpSendThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         TcpSendThread *_t = static_cast<TcpSendThread *>(_o);
@@ -107,26 +107,26 @@ void network_st::TcpSendThread::qt_static_metacall(QObject *_o, QMetaObject::Cal
     }
 }
 
-const QMetaObject network_st::TcpSendThread::staticMetaObject = {
-    { &QThread::staticMetaObject, qt_meta_stringdata_network_st__TcpSendThread.data,
-      qt_meta_data_network_st__TcpSendThread,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject network_client_st::TcpSendThread::staticMetaObject = {
+    { &QThread::staticMetaObject, qt_meta_stringdata_network_client_st__TcpSendThread.data,
+      qt_meta_data_network_client_st__TcpSendThread,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *network_st::TcpSendThread::metaObject() const
+const QMetaObject *network_client_st::TcpSendThread::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *network_st::TcpSendThread::qt_metacast(const char *_clname)
+void *network_client_st::TcpSendThread::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_network_st__TcpSendThread.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_network_client_st__TcpSendThread.stringdata0))
         return static_cast<void*>(this);
     return QThread::qt_metacast(_clname);
 }
 
-int network_st::TcpSendThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int network_client_st::TcpSendThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QThread::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -144,14 +144,14 @@ int network_st::TcpSendThread::qt_metacall(QMetaObject::Call _c, int _id, void *
 }
 
 // SIGNAL 0
-void network_st::TcpSendThread::Signal_SendMessage(MessageUnit * _t1)
+void network_client_st::TcpSendThread::Signal_SendMessage(MessageUnit * _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
-void network_st::TcpSendThread::Signal_UpdateUITcpReplyMessage(MessageUnit * _t1)
+void network_client_st::TcpSendThread::Signal_UpdateUITcpReplyMessage(MessageUnit * _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);

@@ -20,32 +20,32 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_network_st__NetInterface_t {
+struct qt_meta_stringdata_network_client_st__NetInterface_t {
     QByteArrayData data[12];
-    char stringdata0[248];
+    char stringdata0[255];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_network_st__NetInterface_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_network_client_st__NetInterface_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_network_st__NetInterface_t qt_meta_stringdata_network_st__NetInterface = {
+static const qt_meta_stringdata_network_client_st__NetInterface_t qt_meta_stringdata_network_client_st__NetInterface = {
     {
-QT_MOC_LITERAL(0, 0, 24), // "network_st::NetInterface"
-QT_MOC_LITERAL(1, 25, 30), // "Signal_UpdateUITcpReplyMessage"
-QT_MOC_LITERAL(2, 56, 0), // ""
-QT_MOC_LITERAL(3, 57, 12), // "MessageUnit*"
-QT_MOC_LITERAL(4, 70, 12), // "_messageUnit"
-QT_MOC_LITERAL(5, 83, 33), // "Signal_UpdateUITcpReceivedMes..."
-QT_MOC_LITERAL(6, 117, 23), // "Signal_GetServerAddress"
-QT_MOC_LITERAL(7, 141, 25), // "Signal_AddReceivedMessage"
-QT_MOC_LITERAL(8, 167, 8), // "_message"
-QT_MOC_LITERAL(9, 176, 27), // "Signal_BindNewTcpConnection"
-QT_MOC_LITERAL(10, 204, 39), // "Slot_RemoveSendedTcpSocketFro..."
-QT_MOC_LITERAL(11, 244, 3) // "_ip"
+QT_MOC_LITERAL(0, 0, 31), // "network_client_st::NetInterface"
+QT_MOC_LITERAL(1, 32, 30), // "Signal_UpdateUITcpReplyMessage"
+QT_MOC_LITERAL(2, 63, 0), // ""
+QT_MOC_LITERAL(3, 64, 12), // "MessageUnit*"
+QT_MOC_LITERAL(4, 77, 12), // "_messageUnit"
+QT_MOC_LITERAL(5, 90, 33), // "Signal_UpdateUITcpReceivedMes..."
+QT_MOC_LITERAL(6, 124, 23), // "Signal_GetServerAddress"
+QT_MOC_LITERAL(7, 148, 25), // "Signal_AddReceivedMessage"
+QT_MOC_LITERAL(8, 174, 8), // "_message"
+QT_MOC_LITERAL(9, 183, 27), // "Signal_BindNewTcpConnection"
+QT_MOC_LITERAL(10, 211, 39), // "Slot_RemoveSendedTcpSocketFro..."
+QT_MOC_LITERAL(11, 251, 3) // "_ip"
 
     },
-    "network_st::NetInterface\0"
+    "network_client_st::NetInterface\0"
     "Signal_UpdateUITcpReplyMessage\0\0"
     "MessageUnit*\0_messageUnit\0"
     "Signal_UpdateUITcpReceivedMessage\0"
@@ -57,7 +57,7 @@ QT_MOC_LITERAL(11, 244, 3) // "_ip"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_network_st__NetInterface[] = {
+static const uint qt_meta_data_network_client_st__NetInterface[] = {
 
  // content:
        7,       // revision
@@ -93,7 +93,7 @@ static const uint qt_meta_data_network_st__NetInterface[] = {
        0        // eod
 };
 
-void network_st::NetInterface::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void network_client_st::NetInterface::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         NetInterface *_t = static_cast<NetInterface *>(_o);
@@ -147,26 +147,26 @@ void network_st::NetInterface::qt_static_metacall(QObject *_o, QMetaObject::Call
     }
 }
 
-const QMetaObject network_st::NetInterface::staticMetaObject = {
-    { &QObject::staticMetaObject, qt_meta_stringdata_network_st__NetInterface.data,
-      qt_meta_data_network_st__NetInterface,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject network_client_st::NetInterface::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_network_client_st__NetInterface.data,
+      qt_meta_data_network_client_st__NetInterface,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *network_st::NetInterface::metaObject() const
+const QMetaObject *network_client_st::NetInterface::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *network_st::NetInterface::qt_metacast(const char *_clname)
+void *network_client_st::NetInterface::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_network_st__NetInterface.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_network_client_st__NetInterface.stringdata0))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int network_st::NetInterface::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int network_client_st::NetInterface::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -184,34 +184,34 @@ int network_st::NetInterface::qt_metacall(QMetaObject::Call _c, int _id, void **
 }
 
 // SIGNAL 0
-void network_st::NetInterface::Signal_UpdateUITcpReplyMessage(MessageUnit * _t1)
+void network_client_st::NetInterface::Signal_UpdateUITcpReplyMessage(MessageUnit * _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
-void network_st::NetInterface::Signal_UpdateUITcpReceivedMessage(MessageUnit * _t1)
+void network_client_st::NetInterface::Signal_UpdateUITcpReceivedMessage(MessageUnit * _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
-void network_st::NetInterface::Signal_GetServerAddress()
+void network_client_st::NetInterface::Signal_GetServerAddress()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
 }
 
 // SIGNAL 3
-void network_st::NetInterface::Signal_AddReceivedMessage(QString _t1)
+void network_client_st::NetInterface::Signal_AddReceivedMessage(QString _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 
 // SIGNAL 4
-void network_st::NetInterface::Signal_BindNewTcpConnection()
+void network_client_st::NetInterface::Signal_BindNewTcpConnection()
 {
     QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
 }

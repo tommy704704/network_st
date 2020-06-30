@@ -21,31 +21,31 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_network_st__UdpSendThread_t {
+struct qt_meta_stringdata_network_server_st__UdpSendThread_t {
     QByteArrayData data[5];
-    char stringdata0[84];
+    char stringdata0[91];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_network_st__UdpSendThread_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_network_server_st__UdpSendThread_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_network_st__UdpSendThread_t qt_meta_stringdata_network_st__UdpSendThread = {
+static const qt_meta_stringdata_network_server_st__UdpSendThread_t qt_meta_stringdata_network_server_st__UdpSendThread = {
     {
-QT_MOC_LITERAL(0, 0, 25), // "network_st::UdpSendThread"
-QT_MOC_LITERAL(1, 26, 31), // "Signal_UpdateOfflineAddressList"
-QT_MOC_LITERAL(2, 58, 0), // ""
-QT_MOC_LITERAL(3, 59, 15), // "QList<Client*>*"
-QT_MOC_LITERAL(4, 75, 8) // "_clients"
+QT_MOC_LITERAL(0, 0, 32), // "network_server_st::UdpSendThread"
+QT_MOC_LITERAL(1, 33, 31), // "Signal_UpdateOfflineAddressList"
+QT_MOC_LITERAL(2, 65, 0), // ""
+QT_MOC_LITERAL(3, 66, 15), // "QList<Client*>*"
+QT_MOC_LITERAL(4, 82, 8) // "_clients"
 
     },
-    "network_st::UdpSendThread\0"
+    "network_server_st::UdpSendThread\0"
     "Signal_UpdateOfflineAddressList\0\0"
     "QList<Client*>*\0_clients"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_network_st__UdpSendThread[] = {
+static const uint qt_meta_data_network_server_st__UdpSendThread[] = {
 
  // content:
        7,       // revision
@@ -67,7 +67,7 @@ static const uint qt_meta_data_network_st__UdpSendThread[] = {
        0        // eod
 };
 
-void network_st::UdpSendThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void network_server_st::UdpSendThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         UdpSendThread *_t = static_cast<UdpSendThread *>(_o);
@@ -88,26 +88,26 @@ void network_st::UdpSendThread::qt_static_metacall(QObject *_o, QMetaObject::Cal
     }
 }
 
-const QMetaObject network_st::UdpSendThread::staticMetaObject = {
-    { &QThread::staticMetaObject, qt_meta_stringdata_network_st__UdpSendThread.data,
-      qt_meta_data_network_st__UdpSendThread,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject network_server_st::UdpSendThread::staticMetaObject = {
+    { &QThread::staticMetaObject, qt_meta_stringdata_network_server_st__UdpSendThread.data,
+      qt_meta_data_network_server_st__UdpSendThread,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *network_st::UdpSendThread::metaObject() const
+const QMetaObject *network_server_st::UdpSendThread::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *network_st::UdpSendThread::qt_metacast(const char *_clname)
+void *network_server_st::UdpSendThread::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_network_st__UdpSendThread.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_network_server_st__UdpSendThread.stringdata0))
         return static_cast<void*>(this);
     return QThread::qt_metacast(_clname);
 }
 
-int network_st::UdpSendThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int network_server_st::UdpSendThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QThread::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -125,7 +125,7 @@ int network_st::UdpSendThread::qt_metacall(QMetaObject::Call _c, int _id, void *
 }
 
 // SIGNAL 0
-void network_st::UdpSendThread::Signal_UpdateOfflineAddressList(QList<Client*> * _t1)
+void network_server_st::UdpSendThread::Signal_UpdateOfflineAddressList(QList<Client*> * _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
