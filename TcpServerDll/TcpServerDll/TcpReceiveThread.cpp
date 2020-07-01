@@ -81,7 +81,8 @@ void TcpReceiveThread::Slot_ReadyRead()
 
 
 		byteArray_receive = acceptedSocket->readAll();
-		qDebug() << "message received from client, byteArray_receive: " << byteArray_receive;
+		qDebug() << "message received from client, byteArray_receive: " << byteArray_receive
+			<< " Slot_ReadMessage received message size: " << byteArray_receive.size();
 		//读取缓冲区数据
 // 		messageUnit->ip = client_ip;
 
@@ -99,6 +100,7 @@ void TcpReceiveThread::Slot_ReadyRead()
 
 // 			int size = list_messages.size();
 			int size = list_messages->size();
+			qDebug() << "message sizes: " << size;
 
 			for (int i = 0; i < size; i++)
 			{

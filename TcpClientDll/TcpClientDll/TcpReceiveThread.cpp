@@ -29,7 +29,8 @@ void network_client_st::TcpReceiveThread::Slot_ReadMessage()
 
 	QByteArray byteArray_message = tcpSocket_sended->readAll();
 
-	qDebug() << "received message byteArray_message :" << byteArray_message;
+	qDebug() << "received message byteArray_message :" << byteArray_message.data() 
+		<< " Slot_ReadMessage received message size: " << byteArray_message.size();
 
 // 	QString message = QString::fromLocal8Bit(byteArray_message.data());
 

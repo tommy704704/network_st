@@ -103,12 +103,15 @@ QByteArray GetWholeBytes(QString _ip, QByteArray _bytes, bool _is_receive_over)
 		if (k_temp_big_bytes_map_.contains(_ip))
 		{
 			QByteArray result(k_temp_big_bytes_map_.value(_ip));
+			//qDebug() << " over by append----before remove size: " << result.size();
 			result.append(_bytes);
 			k_temp_big_bytes_map_.remove(_ip);
+			//qDebug() << " over by append----size: " << result.size();
 			return result;
 		}
 		else
 		{
+			//qDebug() << " over by once----size: " << _bytes.size();
 			return _bytes;
 		}
 	}
@@ -117,7 +120,10 @@ QByteArray GetWholeBytes(QString _ip, QByteArray _bytes, bool _is_receive_over)
 		if (k_temp_big_bytes_map_.contains(_ip))
 		{
 			QByteArray result(k_temp_big_bytes_map_.value(_ip));
+			//qDebug() << " receiving by append----before append size: " << result.size();
 			result.append(_bytes);
+			k_temp_big_bytes_map_[_ip] = result;
+			//qDebug() << " receiving by append----size: " << result.size();
 			return result;
 		}
 		else
@@ -127,6 +133,31 @@ QByteArray GetWholeBytes(QString _ip, QByteArray _bytes, bool _is_receive_over)
 
 	}
 }
+
+QByteArray *HandleBigData(QString _ip, QByteArray *_bytes, bool &_is_receive_over)
+{
+	/////////////////////////////////////////////////////////////////////////////
+	QByteArray *result_bytes = nullptr;
+	QByteArray temp_bytes(*_bytes);
+	//bool is_receive_over = true;
+	if (QString(temp_bytes).contains(k_end_message_))
+	{
+		int size_end_flag = k_end_message_.size();
+		int size = temp_bytes.size();
+		int left_size = size - size_end_flag;
+		result_bytes = new QByteArray(GetWholeBytes(_ip, temp_bytes.left(left_size), _is_receive_over));
+	}
+	else
+	{
+		_is_receive_over = false;
+		result_bytes = new QByteArray(GetWholeBytes(_ip, temp_bytes, _is_receive_over));
+	}
+	return result_bytes;
+	///<去掉结尾标识
+	//////////////////////////////////////////////////////////////////////////
+
+}
+
 
 void RemoveHeadFromByteArray(QList<MessageUnit *> *_list_messageUnit, QByteArray _byteArray_message, QString _ip)
 {
@@ -141,20 +172,8 @@ void RemoveHeadFromByteArray(QList<MessageUnit *> *_list_messageUnit, QByteArray
 	{
 		/////////////////////////////////////////////////////////////////////////////
 		QByteArray *result_bytes = nullptr;
-		QByteArray temp_bytes(_byteArray_message);
 		bool is_receive_over = true;
-		if (QString(temp_bytes).contains(k_end_message_))
-		{
-			int size_end_flag = k_end_message_.size();
-			int size = temp_bytes.size();
-			int left_size = size - size_end_flag;
-			result_bytes = new QByteArray(GetWholeBytes(_ip, temp_bytes.left(left_size), is_receive_over));
-		}
-		else
-		{
-			is_receive_over = false;
-			result_bytes = &(GetWholeBytes(_ip, temp_bytes, is_receive_over));
-		}
+		result_bytes = HandleBigData(_ip, &_byteArray_message, is_receive_over);
 		///<去掉结尾标识
 		//////////////////////////////////////////////////////////////////////////
 
@@ -167,6 +186,7 @@ void RemoveHeadFromByteArray(QList<MessageUnit *> *_list_messageUnit, QByteArray
 			messageUnit_receive->msg = /*byteArray_message_nohead*/result_bytes->data();
 
 			_list_messageUnit->append(messageUnit_receive);
+			qDebug() << " 0 == count_head size: " << result_bytes->size();
 		}
 		return;
 	}
@@ -193,18 +213,7 @@ void RemoveHeadFromByteArray(QList<MessageUnit *> *_list_messageUnit, QByteArray
 			/////////////////////////////////////////////////////////////////////////////
 			QByteArray *result_bytes = nullptr;
 			bool is_receive_over = true;
-			if (QString(*byteArray_message_nohead).contains(k_end_message_))
-			{
-				int size_end_flag = k_end_message_.size();
-				int size = byteArray_message_nohead->size();
-				int left_size = size - size_end_flag;
-				result_bytes = new QByteArray(GetWholeBytes(_ip, byteArray_message_nohead->left(left_size), is_receive_over));
-			}
-			else
-			{
-				is_receive_over = false;
-				result_bytes = &(GetWholeBytes(_ip, *byteArray_message_nohead, is_receive_over));
-			}
+			result_bytes = HandleBigData(_ip, byteArray_message_nohead, is_receive_over);
 			///<去掉结尾标识
 			//////////////////////////////////////////////////////////////////////////
 
@@ -217,6 +226,7 @@ void RemoveHeadFromByteArray(QList<MessageUnit *> *_list_messageUnit, QByteArray
 				messageUnit_receive->msg = /*byteArray_message_nohead*/result_bytes->data();
 
 				_list_messageUnit->append(messageUnit_receive);
+				qDebug() << " head_occur_index < 0 size: " << result_bytes->size();
 			}
 		}
 		else
@@ -227,27 +237,20 @@ void RemoveHeadFromByteArray(QList<MessageUnit *> *_list_messageUnit, QByteArray
 			/////////////////////////////////////////////////////////////////////////////
 			QByteArray *result_bytes = nullptr;
 			bool is_receive_over = true;
-			if (QString(*byteArray_message_nohead).contains(k_end_message_))
-			{
-				int size_end_flag = k_end_message_.size();
-				int size = byteArray_message_nohead->size();
-				int left_size = size - size_end_flag;
-				result_bytes = new QByteArray(GetWholeBytes(_ip, byteArray_message_nohead->left(left_size), is_receive_over));
-			}
-			else
-			{
-				is_receive_over = false;
-				result_bytes = new QByteArray((GetWholeBytes(_ip, *byteArray_message_nohead, is_receive_over)));
-			}
+			result_bytes = HandleBigData(_ip, byteArray_message_nohead, is_receive_over);
 			///<去掉结尾标识
 			//////////////////////////////////////////////////////////////////////////
 
+			if (is_receive_over)
+			{
 
-			messageUnit_receive->byteArray_msg = /*byteArray_message_nohead*/result_bytes;
+				messageUnit_receive->byteArray_msg = /*byteArray_message_nohead*/result_bytes;
 
-			messageUnit_receive->msg = /*byteArray_message_nohead*/result_bytes->data();
+				messageUnit_receive->msg = /*byteArray_message_nohead*/result_bytes->data();
 
-			_list_messageUnit->append(messageUnit_receive);
+				_list_messageUnit->append(messageUnit_receive);
+				qDebug() << " head_occur_index >= 0 size: " << result_bytes->size();
+			}
 
 			int count_truncate_message = byteArray_message_nohead->count();
 
