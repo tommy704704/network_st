@@ -141,7 +141,7 @@ QByteArray *HandleBigData(QString _ip, QByteArray *_bytes, bool &_is_receive_ove
 	QByteArray *result_bytes = nullptr;
 	QByteArray temp_bytes(*_bytes);
 	//bool is_receive_over = true;
-	if (QString(temp_bytes).contains(k_end_message_))
+	if (/*QString(temp_bytes).contains(k_end_message_)*/_bytes->contains(k_end_message_.toStdString().c_str()))
 	{
 		int size_end_flag = k_end_message_.size();
 		int size = temp_bytes.size();
