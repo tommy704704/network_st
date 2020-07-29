@@ -20,6 +20,12 @@
 
 #define UDP_HEARTBEAT_CLIENT_PORT 60066
 
+extern int k_tcp_server_port_;
+extern int k_tcp_client_port_;
+extern int k_udp_heart_server_port_;
+extern int k_udp_heart_client_port_;
+
+
 namespace network_client_st {
 extern QString k_keepAlive;
 extern QString k_receipt_keepAlive;
@@ -147,6 +153,21 @@ int GetTimeout();
 * @see
 */
 bool SetHeartServer(QString _heartValue);
+
+/************************************
+* \Method:    Set_Ports
+* \FullName:  network_server_st::NetPublicInterface::Set_Ports
+* \Access:    public
+* \Returns:   void
+* \Qualifier:
+* \Parameter: int _tcp_server_port tcp服务端端口
+* \Parameter: int _tcp_client_port tcp客户端端口
+* \Parameter: int _udp_server_port udp服务端心跳包端口
+* \Parameter: int _udp_client_port udp客户端心跳包端口
+* \comment: 如果要设置端口，需要在实例化interface之前调用
+************************************/
+void Set_Ports(int _tcp_server_port, int _tcp_client_port, int _udp_server_port, int _udp_client_port);
+
 
 }
 #endif // GLOBAL_CLIENT_H

@@ -160,7 +160,7 @@ void UdpSendThread::run()
 						msg.toLocal8Bit().constData()
 						, size_msg
 						, server_address
-						, UDP_HEARTBEAT_SERVER_PORT);
+						, /*UDP_HEARTBEAT_SERVER_PORT*/k_udp_heart_server_port_);
 					///<回执心跳包
 
 					if (GetOutDebug())

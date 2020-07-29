@@ -7949,3 +7949,8 @@
 2020/07/01 18:14:32:639 IP:192.168.0.188 tcp reconnect information: ConnectedState:A connection is established.
 2020/07/01 18:19:10:466 IP:192.168.0.188 tcp error information: The remote host closed the connection
 2020/07/01 18:19:10:467 IP:192.168.0.188 tcp connect information: ClosingState:The socket is about to close (data may still be waiting to be written).
+2020/07/29 13:13:50:743 IP:192.168.0.188 tcp connect information: ConnectedState:A connection is established.
+2020/07/29 13:13:50:787 IP:192.168.0.188 tcp connect information: ConnectedState:A connection is established.
+2020/07/29 13:14:05:313 IP:192.168.0.188 tcp error information: The remote host closed the connection
+2020/07/29 13:14:05:313 IP:192.168.0.188 tcp connect information: ClosingState:The socket is about to close (data may still be waiting to be written).
+2020/07/29 13:14:07:743 IP: tcp reconnect information: UnconnectedState:The socket is not connected.

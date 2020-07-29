@@ -152,6 +152,7 @@ public:
 	* @comment: 手动删除地址
 	************************************/
 	void RemoveClientAddress(int _index);
+
 private:
 	NetPublicInterface();
 	void Init();

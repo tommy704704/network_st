@@ -52,7 +52,7 @@ void UdpReceiveThread::Init()
 	///<然后再绑定服务端	
 	
 
-	bool is_ok = udpSocket_heartbeat_receive_->bind(QHostAddress::Any, UDP_HEARTBEAT_CLIENT_PORT);
+	bool is_ok = udpSocket_heartbeat_receive_->bind(QHostAddress::Any, /*UDP_HEARTBEAT_CLIENT_PORT*/k_udp_heart_client_port_);
 	///<打开UDP连接
 
 // 	is_ok = connect(udpSocket_heartbeat_receive_, SIGNAL(readyRead()), this, SLOT(ReadPendingDatagrams()));

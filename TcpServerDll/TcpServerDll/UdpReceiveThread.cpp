@@ -64,7 +64,7 @@ void UdpReceiveThread::Init()
     QHostAddress server_address(g_local_ip);
     ///<接收客户端心跳回执
 
-	bool is_ok = udpSocket_receive_heartbeat_->bind(QHostAddress::Any/*server_address*/, UDP_HEARTBEAT_SERVER_PORT);
+	bool is_ok = udpSocket_receive_heartbeat_->bind(QHostAddress::Any/*server_address*/, /*UDP_HEARTBEAT_SERVER_PORT*/k_udp_heart_server_port_);
 	///<打开UDP连接
 
 }

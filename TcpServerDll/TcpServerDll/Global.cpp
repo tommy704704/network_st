@@ -18,6 +18,22 @@ int broadcast_interval_ = k_broadcast_interval_;			///<广播发送的默认间�
 
 bool g_is_stream_handle = true;
 
+
+int k_tcp_server_port_ = TCP_SERVER_PORT;
+int k_tcp_client_port_ = TCP_CLIENT_PORT;
+int k_udp_heart_server_port_ = UDP_HEARTBEAT_SERVER_PORT;
+int k_udp_heart_client_port_ = UDP_HEARTBEAT_CLIENT_PORT;
+
+void Set_Ports(int _tcp_server_port, int _tcp_client_port, int _udp_server_port, int _udp_client_port)
+{
+	k_tcp_server_port_ = _tcp_server_port;
+	k_tcp_client_port_ = _tcp_client_port;
+	k_udp_heart_server_port_ = _udp_server_port;
+	k_udp_heart_client_port_ = _udp_client_port;
+}
+
+
+
 bool network_server_st::IsStreamHandle()
 {
 	return g_is_stream_handle;

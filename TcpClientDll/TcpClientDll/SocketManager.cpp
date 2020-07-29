@@ -49,7 +49,7 @@ QUdpSocket * SocketManager::GetSendUdpSocketByIP(QString _ip)
 	if (!map_sended_udpSocket_->contains(_ip))
 	{
 		sendSocket = new QUdpSocket();
-		sendSocket->connectToHost(_ip, UDP_HEARTBEAT_SERVER_PORT);
+		sendSocket->connectToHost(_ip, /*UDP_HEARTBEAT_SERVER_PORT*/k_udp_heart_server_port_);
 		map_sended_udpSocket_->insert(_ip, sendSocket);
 	}
 	else
@@ -69,7 +69,7 @@ QTcpSocket * SocketManager::GetAcceptedTcpSocketByIP(QString _ip)
     if(!map_accepted_tcpSocket_->contains(_ip))
     {
         acceptedSocket = new QTcpSocket();
-		acceptedSocket->connectToHost(_ip, TCP_SERVER_PORT);
+		acceptedSocket->connectToHost(_ip, /*TCP_SERVER_PORT*/k_tcp_server_port_);
         map_accepted_tcpSocket_->insert(_ip, acceptedSocket);
     }
     else
@@ -97,7 +97,7 @@ QUdpSocket * network_client_st::SocketManager::GetAcceptedUdpSocketByIP(QString 
 	if (!map_accepted_udpSocket_->contains(_ip))
 	{
 		acceptedSocket = new QUdpSocket();
-		acceptedSocket->connectToHost(_ip, UDP_HEARTBEAT_SERVER_PORT);
+		acceptedSocket->connectToHost(_ip, /*UDP_HEARTBEAT_SERVER_PORT*/k_udp_heart_server_port_);
 		map_accepted_udpSocket_->insert(_ip, acceptedSocket);
 	}
 	else
@@ -116,7 +116,7 @@ QTcpSocket * network_client_st::SocketManager::ReCreateSendTcpSocket(const QStri
 
 	QTcpSocket *sendSocket = NULL;
 	sendSocket = new QTcpSocket();
-	sendSocket->connectToHost(_ip, TCP_SERVER_PORT);
+	sendSocket->connectToHost(_ip, /*TCP_SERVER_PORT*/k_tcp_server_port_);
 	sendSocket->waitForConnected();
 	int state = sendSocket->state();
 	if (QAbstractSocket::ConnectedState == state)

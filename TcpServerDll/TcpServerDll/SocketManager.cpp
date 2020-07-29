@@ -33,7 +33,7 @@ QTcpSocket * SocketManager::GetSendTcpSocketByIP(QString _ip)
     if(!map_sended_tcpSocket_->contains(_ip))
     {
         sendSocket = new QTcpSocket();
-        sendSocket->connectToHost(_ip, TCP_CLIENT_PORT);
+        sendSocket->connectToHost(_ip, /*TCP_CLIENT_PORT*/k_tcp_client_port_);
         map_sended_tcpSocket_->insert(_ip, sendSocket);
     }
     else
@@ -50,7 +50,7 @@ QUdpSocket * SocketManager::GetSendUdpSocketByUP(QString _ip)
 	if (!map_sended_udpSocket_->contains(_ip))
 	{
 		sendSocket = new QUdpSocket();
-		sendSocket->connectToHost(_ip, UDP_HEARTBEAT_CLIENT_PORT);
+		sendSocket->connectToHost(_ip, /*UDP_HEARTBEAT_CLIENT_PORT*/k_udp_heart_client_port_);
 		map_sended_udpSocket_->insert(_ip, sendSocket);
 	}
 	else
@@ -96,7 +96,7 @@ QUdpSocket * network_server_st::SocketManager::GetAcceptedUdpSocketByIP(QString 
 	if (!map_accepted_udpSocket_->contains(_ip))
 	{
 		acceptedSocket = new QUdpSocket();
-		acceptedSocket->connectToHost(_ip, UDP_HEARTBEAT_CLIENT_PORT);
+		acceptedSocket->connectToHost(_ip, /*UDP_HEARTBEAT_CLIENT_PORT*/k_udp_heart_client_port_);
 		map_accepted_udpSocket_->insert(_ip, acceptedSocket);
 	}
 	else
@@ -113,7 +113,7 @@ void SocketManager::AppendSendTcpSocket(MessageUnit *_messageUnit)
     if(!map_sended_tcpSocket_->contains(_messageUnit->ip))
     {
         sendSocket = new QTcpSocket();
-        sendSocket->connectToHost(_messageUnit->ip, TCP_CLIENT_PORT);
+        sendSocket->connectToHost(_messageUnit->ip, /*TCP_CLIENT_PORT*/k_tcp_client_port_);
         map_sended_tcpSocket_->insert(_messageUnit->ip, sendSocket);
     }
     else

@@ -62,7 +62,7 @@ void UdpSendThread::BroadcastAllOnlineClient()
 		qint64 sended_bytes = udpSocket_send_heartbeat_->writeDatagram(msg.toLocal8Bit().constData(),
 			size_msg,
 			QHostAddress::Broadcast/*QHostAddress("192.168.0.255")*/,
-			UDP_HEARTBEAT_CLIENT_PORT);
+			/*UDP_HEARTBEAT_CLIENT_PORT*/k_udp_heart_client_port_);
 		if (GetOutDebug())
 		{
 			qDebug() << QDateTime::currentDateTime().toString("yyyy/MM/dd HH:mm:ss:zzz") << ":.heart."
@@ -140,7 +140,7 @@ void network_server_st::UdpSendThread::NoticeClientClearTcpConnect()
 			qint64 sended_bytes = udpSocket_send_heartbeat_->writeDatagram(msg.toLocal8Bit().constData()
 																		, size_msg
 																		, client_address
-																		, UDP_HEARTBEAT_CLIENT_PORT);
+																		, /*UDP_HEARTBEAT_CLIENT_PORT*/k_udp_heart_client_port_);
 
 			//mutex_.unlock();
 		}

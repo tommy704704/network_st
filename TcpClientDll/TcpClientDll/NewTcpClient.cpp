@@ -230,7 +230,7 @@ void network_client_st::NewTcpClient::Slot_GetServerAddress()
 {
 	tcpSocket_connectToServer_ = new QTcpSocket();
 	QHostAddress server_address(g_server_ip);
-	tcpSocket_connectToServer_->connectToHost(server_address, TCP_SERVER_PORT);
+	tcpSocket_connectToServer_->connectToHost(server_address, /*TCP_SERVER_PORT*/k_tcp_server_port_);
 
 
 	///<获取服务端地址后，开启tcp接收服务

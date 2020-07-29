@@ -44,7 +44,7 @@ void NewTcpServer::Init()
     
 	tcp_server_ = new QTcpServer();
     
-	tcp_server_->listen(QHostAddress::Any, TCP_SERVER_PORT);
+	tcp_server_->listen(QHostAddress::Any, /*TCP_SERVER_PORT*/k_tcp_server_port_);
     ///<监听
 }
 
