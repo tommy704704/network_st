@@ -7,6 +7,7 @@
 #include "NewTcpServer.h"
 #include "UdpReceiveThread.h"
 #include "UdpSendThread.h"
+#include "TcpSendWorker.h"
 
 using namespace network_server_st;
 NetInterface *NetInterface::instance_ = NULL;
@@ -25,9 +26,13 @@ NetInterface *NetInterface::GetInstance()
 
 NetInterface::~NetInterface()
 {
-	delete TcpSendThread_;
+	delete tcpSend_thread_;
 
-	TcpSendThread_ = NULL;
+	tcpSend_thread_ = NULL;
+
+	//delete TcpSendThread_;
+
+	//TcpSendThread_ = NULL;
 
 	tcpReceiveThread_->quit();
 
@@ -46,7 +51,7 @@ NetInterface::~NetInterface()
 	delete tcpServer_;
 
 	tcpServer_ = NULL;
-
+	//stao 2020.9.29
 	delete addressManager_;
 
 	addressManager_ = NULL;
@@ -55,9 +60,10 @@ NetInterface::~NetInterface()
 
 	logManager_ = NULL;
 	
-	delete messageManager_;
+	//delete messageManager_;
 
-	messageManager_ = NULL;
+	//messageManager_ = NULL;
+	//在sendTcpWorker线程中析构
 
 	delete socketManager_;
 
@@ -70,7 +76,7 @@ void NetInterface::BroadcastMessage()
 
 }
 
-void NetInterface::SendMessage(MessageUnit *_messageUnit)
+void NetInterface::SendMessageTcp(MessageUnit *_messageUnit)
 {
     /*消息加入队列*/
 	messageManager_->AppendSendedMessage(_messageUnit);
@@ -115,17 +121,25 @@ void NetInterface::Init()
 	logManager_ = LogManager::GetInstance();
 
 	tcpServer_ = NewTcpServer::GetInstance();
+	//stao 2020.9.29
 
-	TcpSendThread_ = TcpSendThread::GetInstance();
+	//TcpSendThread_ = TcpSendThread::GetInstance();
 
     tcpReceiveThread_ = TcpReceiveThread::GetInstance();
 
-	TcpSendThread_->start();
+	tcpSendWorker_ = TcpSendWorker::GetInstance();
+	tcpSend_thread_ = new QThread();
+	tcpSendWorker_->moveToThread(tcpSend_thread_);
+	tcpSend_thread_->start();
+
+
+	//TcpSendThread_->start();
 
 	tcpReceiveThread_->start();
 
     CreateSignalAndSlot();
 
+	emit Signal_StartTcpSendWork();
 }
 
 void NetInterface::CreateSignalAndSlot()
@@ -149,6 +163,28 @@ void NetInterface::CreateSignalAndSlot()
 		, SIGNAL(Signal_UpdateAddressList(Client *))
 		, this
 		, SIGNAL(Signal_UpdateAddressList(Client *)));
+
+
+	//////////////////////////
+	is_ok = connect(tcpSend_thread_
+		, &QThread::finished
+		, tcpSendWorker_
+		, &QObject::deleteLater);
+	is_ok = connect(this
+		, &NetInterface::Signal_StartTcpSendWork
+		, tcpSendWorker_
+		, &TcpSendWorker::Slot_Work
+		, Qt::ConnectionType::QueuedConnection);
+	is_ok = connect(tcpSendWorker_
+		, &TcpSendWorker::Signal_SendTcpMessage
+		, tcpServer_
+		, &NewTcpServer::Slot_SendTcpMessage
+		, Qt::ConnectionType::QueuedConnection);
+	is_ok = connect(tcpSendWorker_
+		, &TcpSendWorker::Signal_RemoveSendedMessage
+		, tcpServer_
+		, &NewTcpServer::Slot_RemoveSendedMessage
+		, Qt::ConnectionType::BlockingQueuedConnection);
 
 }
 

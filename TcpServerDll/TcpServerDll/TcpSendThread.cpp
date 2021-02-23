@@ -1,4 +1,6 @@
 #include "TcpSendThread.h"
+#include <QException> 
+#include "NewTcpServer.h"
 using namespace network_server_st;
 
 TcpSendThread *TcpSendThread::instance_ = NULL;
@@ -13,6 +15,9 @@ TcpSendThread::~TcpSendThread()
 {
 	is_quit_ = true;
 
+	//delete k_tcpServer_;
+	//k_tcpServer_ = NULL;
+	
 	wait();
 }
 
@@ -23,10 +28,15 @@ void TcpSendThread::Init()
 	messageManager_ = MessageManager::GetInstance();
 
 	socketManager_ = SocketManager::GetInstance();
+
+	NewTcpServer::GetInstance();
 }
 
+//NewTcpServer *tcpServer_ = NULL;
 void TcpSendThread::run()
 {
+	//tcpServer_ = NewTcpServer::GetInstance();
+
 // 	socketManager_ = new SocketManager();
 	/* 发送线程单独维护一个连接池，只包含所有的发送连接 */
 	while (!is_quit_)
@@ -48,8 +58,8 @@ void TcpSendThread::run()
 
 			if (ipv4 != k_default_ip && ipv4 != "")
 			{
-				SendMessage(ipv4);
-				qDebug() << "SendMessage() by only one client ip: " << ipv4;
+				SendMessageTcp(ipv4);
+				qDebug() << "SendMessageTcp() by only one client ip: " << ipv4;
 			}
 			else if (k_default_ip == ipv4 || "" == ipv4)
 			{
@@ -59,7 +69,7 @@ void TcpSendThread::run()
 
 				bool is_sended = false;
 
-				qDebug() << "SendMessage() by broadcast, client size: " << size_client;
+				qDebug() << "SendMessageTcp() by broadcast, client size: " << size_client;
 				for (int j = 0; j < size_client; j++)
 				{
 					Client *client = addressManager_->GetClientByIndex(j);
@@ -69,8 +79,8 @@ void TcpSendThread::run()
 					if (client->is_online)
 					{
 // 	 					this->msleep(100);
-						is_sended &= SendMessage(ipv4);
-						qDebug() << "SendMessage() by broadcast, each client ip: " << ipv4;
+						is_sended &= SendMessageTcp(ipv4);
+						qDebug() << "SendMessageTcp() by broadcast, each client ip: " << ipv4;
 					}
 				}
 			}
@@ -83,7 +93,7 @@ void TcpSendThread::run()
 	}
 }
 
-bool TcpSendThread::SendMessage(const QString _ipv4)
+bool TcpSendThread::SendMessageTcp(const QString _ipv4)
 {
 	MessageUnit *messageUnit = messageManager_->GetSendingMessage();
     /*取队列头，发送后删除*/
@@ -106,9 +116,26 @@ bool TcpSendThread::SendMessage(const QString _ipv4)
 			MessageUnit messageUnit_head = PackageMessage(messageUnit);
 
 			qint64 success_sended = sendSocket->write(*messageUnit_head.byteArray_msg);
+			bool is_written = false;
+			try
+			{
+				if (sendSocket != NULL)
+				{
+					//throw "error";
+					is_written = sendSocket->waitForBytesWritten();
+					qDebug() << "socket write data to " << _ipv4 << " ====> " << is_written;
+				}
 
-			bool is_written = sendSocket->waitForBytesWritten();
-
+			}
+			catch (QException  &e)
+			{
+				qDebug() << "socket write data to " << _ipv4 << " ====> " << is_written << " exception ";
+				
+			}
+			catch (...)
+			{
+				qDebug() << "socket write data to " << _ipv4 << " ====> " << is_written << " exception... ";
+			}
 			return true;
 		}
 	}

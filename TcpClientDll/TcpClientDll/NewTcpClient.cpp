@@ -41,7 +41,8 @@ void network_client_st::NewTcpClient::CreateSignalAndSLot()
 	is_ok = connect(tcpSocket_connectToServer_
 		, SIGNAL(readyRead())
 		, tcpReceiveThread_
-		, SLOT(Slot_ReadMessage()));
+		, SLOT(Slot_ReadMessage())
+		, Qt::QueuedConnection);
 
 	is_ok = connect(tcpReceiveThread_
 		, SIGNAL(Signal_UpdateUITcpReceivedMessage(MessageUnit *))
@@ -229,23 +230,25 @@ void network_client_st::NewTcpClient::Slot_Disconnected()
 void network_client_st::NewTcpClient::Slot_GetServerAddress()
 {
 	tcpSocket_connectToServer_ = new QTcpSocket();
-	QHostAddress server_address(g_server_ip);
-	tcpSocket_connectToServer_->connectToHost(server_address, /*TCP_SERVER_PORT*/k_tcp_server_port_);
-
-
-	///<获取服务端地址后，开启tcp接收服务
 
 	if (!tcpReceiveThread_)
 	{
 		tcpReceiveThread_ = TcpReceiveThread::GetInstance();
 	}
+	CreateSignalAndSLot();
+	///<stao20210223 解决第一次连接信号槽没有关联，导致sendsocket没有加入容器，触使接收reset后重连导致socket异常，收不到服务器消息
+
+	QHostAddress server_address(g_server_ip);
+	tcpSocket_connectToServer_->connectToHost(server_address, /*TCP_SERVER_PORT*/k_tcp_server_port_);
+	tcpSocket_connectToServer_->waitForConnected();
+
+
+	///<获取服务端地址后，开启tcp接收服务
 	if (!tcpReceiveThread_->isRunning())
 	{
 		tcpReceiveThread_->start();
 	}
-	
 
-	CreateSignalAndSLot();
 
 }
 

@@ -110,6 +110,15 @@
     <ClCompile Include="AddressManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TcpSendWorker.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TcpSendWorker.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpSendWorker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tcpserverdll.h">
@@ -154,6 +163,9 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="NetPublicInterface.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="TcpSendWorker.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>

@@ -127,8 +127,12 @@ void UdpReceiveThread::run()
 			}
 			QString text = QString(datagram);
 
+			///
+			QTcpSocket *sendSocket = socketManager_->GetSendTcpSocketByIP(g_server_ip);
+			///<stao20210223 次判断解决第一次连接服务器后会收到reset信号，进行多余重连，sendsocket异常，无法收到fwq消息
 			if (text.startsWith(k_reset)
-				&& !text.startsWith(k_keepAlive))
+				&& !text.startsWith(k_keepAlive)
+				&& !sendSocket)
 			{
 				///<收到服务器连接重置消息
 				emit Signal_DisconnectTcpFromHost(g_server_ip);

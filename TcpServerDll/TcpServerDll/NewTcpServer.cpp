@@ -19,6 +19,12 @@ NewTcpServer::NewTcpServer(QObject *parent)/* : QTcpServer(parent)*/
     Init();
 
     CreateSignalAndSlot();
+	//改在tcp 发送线程绑定
+}
+
+QTcpServer *NewTcpServer::Get_TcpServer()
+{
+	return tcp_server_;
 }
 
 void NewTcpServer::CreateSignalAndSlot()
@@ -30,19 +36,21 @@ void NewTcpServer::Init()
 {
 	addressManager_ = AddressManager::GetInstance();
 
+	messageManager_ = MessageManager::GetInstance();
+
 	logManager_ = LogManager::GetInstance();
 
     socketManager_ = SocketManager::GetInstance();
    
-	tcpSendThread_ = TcpSendThread::GetInstance();
-    
+	//tcpSendThread_ = TcpSendThread::GetInstance();
+
 	tcpReceiveThread_ = TcpReceiveThread::GetInstance();
     
-	tcpSendThread_->start();
+	//tcpSendThread_->start();
+
+	//tcpReceiveThread_->start();
     
-	tcpReceiveThread_->start();
-    
-	tcp_server_ = new QTcpServer();
+	tcp_server_ = new QTcpServer(this);
     
 	tcp_server_->listen(QHostAddress::Any, /*TCP_SERVER_PORT*/k_tcp_server_port_);
     ///<监听
@@ -192,4 +200,49 @@ QString network_server_st::NewTcpServer::GetConnectionInfromation(const int _typ
 		break;
 	}
 	return result;
+}
+
+
+
+bool network_server_st::NewTcpServer::Slot_SendTcpMessage(const QString _ipv4)
+{
+	MessageUnit *messageUnit = messageManager_->GetSendingMessage();
+	/*取队列头，发送后删除*/
+
+	QTcpSocket *sendSocket = NULL;
+
+	sendSocket = socketManager_->GetAcceptedTcpSocketByIP(_ipv4);
+
+	if (!sendSocket)
+	{
+		return false;
+	}
+	else if (sendSocket->isValid() && sendSocket->isWritable())
+	{
+		int state = sendSocket->state();
+
+		if (QAbstractSocket::ConnectedState == state)
+		{
+			// 			qint64 success_sended = sendSocket->write(messageUnit->msg, strlen(messageUnit->msg));
+			MessageUnit messageUnit_head = PackageMessage(messageUnit);
+
+			qint64 success_sended = sendSocket->write(*messageUnit_head.byteArray_msg);
+			bool is_written = false;
+			if (sendSocket != NULL)
+			{
+				//throw "error";
+				is_written = sendSocket->waitForBytesWritten();
+				qDebug() << "socket write data to " << _ipv4 << " ====> " << is_written;
+
+			}
+			return true;
+		}
+	}
+	return false;
+
+}
+
+void network_server_st::NewTcpServer::Slot_RemoveSendedMessage()
+{
+	messageManager_->RemoveSendedMessage();
 }

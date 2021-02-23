@@ -16,6 +16,7 @@ class AddressManager;
 class LogManager;
 class TcpReceiveThread;
 class TcpSendThread;
+class TcpSendWorker;
 class SocketManager;
 class MessageManager;
 class NewTcpServer;
@@ -108,7 +109,7 @@ private:
 	* @Parameter:
 	* @comment:     发送消息给指定客户端
 	************************************/
-	void SendMessage(MessageUnit *_messageUnit);
+	void SendMessageTcp(MessageUnit *_messageUnit);
 	/************************************
 	* @Method:
 	* @Access:
@@ -133,10 +134,14 @@ signals:
 
 	void Signal_UpdateOfflineAddressList(QList<Client *> *_clients);
 
+	void Signal_StartTcpSendWork();
+
+
 private:
     static NetInterface *instance_;
 
 	NewTcpServer *tcpServer_;
+	//stao 2020.9.29
 
 	AddressManager *addressManager_;
 	
@@ -153,6 +158,9 @@ private:
 	UdpReceiveThread *udpReceiveThread_;
 	
 	UdpSendThread *udpSendThread_;
+
+	QThread *tcpSend_thread_;
+	TcpSendWorker *tcpSendWorker_;
 };
 
 }

@@ -17,7 +17,6 @@
 #include "MessageManager.h"
 #include "SocketManager.h"
 namespace network_server_st {
-
 class TcpSendThread : public QThread
 {
 	Q_OBJECT
@@ -45,7 +44,7 @@ private:
     * @Parameter:
     * @comment:     发送消息给指定客户端
     ************************************/
-	bool SendMessage(const QString _ipv4);
+	bool SendMessageTcp(const QString _ipv4);
 public:
 	SocketManager *socketManager_;		///<发送线程有单独的socket管理器
 
@@ -62,7 +61,7 @@ private:
 
 	QMutex mutex_;
 
-	QTcpServer *tcp_server_;
+	//QTcpServer *tcp_server_;
 };
 }
 

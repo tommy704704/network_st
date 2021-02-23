@@ -49,6 +49,7 @@ const int k_broadcast_interval_ = 3;					///<广播发送的默认间隔3，单�
 const QString k_header_message = "-head-";				///<消息头
 const QString k_end_message_ = "-end-";		///<消息结束，解决大消息融合
 
+
 /************************************************************************/
 /*消息默认是QByteArray接收QDataStream这种形式因为业务需要，IsStreamHandle返回为true
 如果是其他形式赋值QByteArray则IsStreamHandle返回false                           */

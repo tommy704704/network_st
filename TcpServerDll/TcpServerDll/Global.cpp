@@ -24,6 +24,7 @@ int k_tcp_client_port_ = TCP_CLIENT_PORT;
 int k_udp_heart_server_port_ = UDP_HEARTBEAT_SERVER_PORT;
 int k_udp_heart_client_port_ = UDP_HEARTBEAT_CLIENT_PORT;
 
+
 void Set_Ports(int _tcp_server_port, int _tcp_client_port, int _udp_server_port, int _udp_client_port)
 {
 	k_tcp_server_port_ = _tcp_server_port;
@@ -331,7 +332,10 @@ QList<MessageUnit *> * network_server_st::UnpackMessage(QByteArray byteArray_mes
 MessageUnit network_server_st::PackageMessage(MessageUnit *_messageUnit)
 {
 	MessageUnit messageUnit;
-
+	if (NULL == _messageUnit)
+	{
+		return messageUnit;
+	}
 	if (IsStreamHandle())
 	{
 		//QString qs_message = QString::fromLocal8Bit(_messageUnit->msg);

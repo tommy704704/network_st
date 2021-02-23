@@ -13,6 +13,7 @@
 #include "AddressManager.h"
 #include "Global.h"
 #include "LogManager.h"
+#include "MessageManager.h"
 #include "TcpReceiveThread.h"
 #include "TcpSendThread.h"
 #include "SocketManager.h"
@@ -39,8 +40,14 @@ public:
         return instance_;
     };
     ~NewTcpServer();
+	QTcpServer *Get_TcpServer();
 // protected:
 // 	void incomingConnection(qintptr socketDescriptor) Q_DECL_OVERRIDE;
+
+	public slots:
+	bool Slot_SendTcpMessage(const QString _ipv4);
+	void Slot_RemoveSendedMessage();
+
 private slots:
     void Slot_NewConnection();
 	void Slot_Disconnected();
@@ -63,6 +70,8 @@ private:
     TcpSendThread *tcpSendThread_;
 
 	AddressManager *addressManager_;
+
+	MessageManager *messageManager_;
 
 	LogManager *logManager_;
 

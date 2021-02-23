@@ -13,14 +13,16 @@ MessageManager::~MessageManager()
 {
 	mutex_.lock();
 
-	delete queue_sending_message_;         ///<要发送的消息缓存
-
-	queue_sending_message_ = NULL;
 
 	delete queue_received_message_;        ///<接收到的消息缓存
 
 	queue_received_message_ = NULL;
 
+	delete queue_sending_message_;         ///<要发送的消息缓存
+
+	queue_sending_message_ = NULL;
+
+	instance_ = NULL;
 	mutex_.unlock();
 }
 
@@ -35,12 +37,11 @@ void MessageManager::Init()
 void MessageManager::RemoveSendedMessage()
 {
 	mutex_.lock();
-	
 	if (!queue_sending_message_->isEmpty())
 	{
 		queue_sending_message_->dequeue();
 	}
-	
+
 	mutex_.unlock();
 }
 
@@ -60,19 +61,21 @@ void MessageManager::RemoveReceivedMessage()
 void MessageManager::AppendSendedMessage(MessageUnit *_messageUnit)
 {
 	mutex_.lock();
-
-	queue_sending_message_->enqueue(_messageUnit);
-
+	if (queue_sending_message_ != NULL)
+	{
+		queue_sending_message_->enqueue(_messageUnit);
+	}
 	mutex_.unlock();
 }
 
 void MessageManager::AppendReceivedMessage(MessageUnit *_messageUnit)
 {
 	mutex_.lock();
-
-	queue_received_message_->enqueue(_messageUnit);
-	/*加入队列*/
-
+	if (queue_received_message_ != NULL)
+	{
+		queue_received_message_->enqueue(_messageUnit);
+		/*加入队列*/
+	}
 	mutex_.unlock();
 }
 
@@ -100,9 +103,11 @@ MessageUnit *MessageManager::GetSendingMessage()
 int MessageManager::GetSizeSendingMessage()
 {
 	mutex_.lock();
-
-	int size = queue_sending_message_->size();
-
+	int size = 0;
+	if (queue_sending_message_ != NULL)
+	{
+		size = queue_sending_message_->size();
+	}
 	mutex_.unlock();
 
 	return size;
@@ -111,9 +116,12 @@ int MessageManager::GetSizeSendingMessage()
 void MessageManager::RemoveSendMessage(char *_msg)
 {
 	mutex_.lock();
-	
-	int size = queue_sending_message_->size();
-	
+	int size = 0;
+	if (queue_sending_message_ != NULL)
+	{
+		size = queue_sending_message_->size();
+	}
+
 	for (int i = 0; i < size;i++)
 	{
 		MessageUnit *messageUnit = queue_sending_message_->at(i);

@@ -104,21 +104,22 @@ void NetInterface::CreateSignalAndSlot()
 		, this
 		, SIGNAL(Signal_UpdateUITcpReceivedMessage(MessageUnit *)));
 
-	is_ok = connect(udpReceiveThread_
-		, SIGNAL(Signal_GetServerAddress())
-		, this
-		, SIGNAL(Signal_GetServerAddress()));
-
+	//is_ok = connect(udpReceiveThread_
+	//	, SIGNAL(Signal_GetServerAddress())
+	//	, this
+	//	, SIGNAL(Signal_GetServerAddress()));
+	///<stao 20210222 信号没有使用
 	is_ok = connect(udpReceiveThread_
 		, SIGNAL(Signal_AddReceivedMessage(QString))
 		, this
 		, SIGNAL(Signal_AddReceivedMessage(QString)));
 
-	is_ok = connect(udpReceiveThread_
-		, SIGNAL(Signal_BindNewTcpConnection())
-		, this
-		, SIGNAL(Signal_BindNewTcpConnection())
-		, Qt::BlockingQueuedConnection);
+	//is_ok = connect(udpReceiveThread_
+	//	, SIGNAL(Signal_BindNewTcpConnection())
+	//	, this
+	//	, SIGNAL(Signal_BindNewTcpConnection())
+	//	, Qt::BlockingQueuedConnection);
+	///<stao 20210222 信号没有使用
 	///<消息传递，通知重连接
 	is_ok = connect(udpReceiveThread_
 		, SIGNAL(Signal_GetServerAddress())
